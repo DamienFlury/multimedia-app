@@ -6,8 +6,11 @@ declare module 'styled-components' {
     borderRadius: string;
 
     colors: {
-      primary: string;
-      secondary: string;
+      primary: string[];
+      secondary: string[];
+      background: string[];
     };
+
+    shadows: string[];
   }
 }
