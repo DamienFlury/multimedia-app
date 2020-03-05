@@ -31,6 +31,8 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': [1, { "extensions": [".js", ".jsx", ".tsx"] }],
     'import/no-unresolved': 'off',
-    'import/extensions': 'off'
+    'import/extensions': 'off',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'error'
   },
 };
