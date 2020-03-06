@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import styled, { DefaultTheme, ThemeProvider } from 'styled-components';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
+import Paper from './styled-components/Paper';
 
 const lightTheme: DefaultTheme = {
   borderRadius: '4px',
   colors: {
     primary: ['#00759c'],
     secondary: [],
-    background: ['#ffffff'],
+    background: ['#ffffff', '#ffffff'],
+    text: '#111111',
   },
   shadows: ['0 2px 3px rgba(0, 0, 0, 0.5)'],
 };
@@ -18,14 +20,15 @@ const darkTheme: DefaultTheme = {
   colors: {
     primary: ['#00759c'],
     secondary: [],
-    background: ['#222222'],
+    background: ['#222222', '#323232'],
+    text: '#ffffff',
   },
   shadows: ['0 2px 3px rgba(0, 0, 0, 0.5)'],
 };
 
 const Main = styled.main`
   min-height: 100vh;
-  background: ${props => props.theme.colors.background};
+  background: ${props => props.theme.colors.background[0]};
   transition: background 0.3s;
 `;
 
@@ -47,6 +50,9 @@ function App() {
       <Main>
         <BrowserRouter>
           <NavBar setThemeType={setThemeType} themeType={themeType} />
+          <Route path="/">
+            <Paper>Test</Paper>
+          </Route>
         </BrowserRouter>
       </Main>
     </ThemeProvider>
