@@ -4,7 +4,7 @@ const Paper = styled.div`
   background: ${props => props.theme.colors.background[1]};
   box-shadow: ${props => props.theme.shadows[0]};
   border-radius: ${props => props.theme.borderRadius};
-  transition: 0.3s;
+  transition: ${props => props.theme.transitions[0]};
   color: ${props => props.theme.colors.text};
 `;
 

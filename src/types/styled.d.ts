@@ -13,5 +13,6 @@ declare module 'styled-components' {
     };
 
     shadows: string[];
+    transitions: string[];
   }
 }

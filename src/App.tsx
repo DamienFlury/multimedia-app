@@ -13,6 +13,7 @@ const lightTheme: DefaultTheme = {
     text: '#111111',
   },
   shadows: ['0 2px 3px rgba(0, 0, 0, 0.5)'],
+  transitions: ['0.3s'],
 };
 
 const darkTheme: DefaultTheme = {
@@ -24,12 +25,13 @@ const darkTheme: DefaultTheme = {
     text: '#ffffff',
   },
   shadows: ['0 2px 3px rgba(0, 0, 0, 0.5)'],
+  transitions: ['0.3s'],
 };
 
 const Main = styled.main`
   min-height: 100vh;
   background: ${props => props.theme.colors.background[0]};
-  transition: background 0.3s;
+  transition: background ${props => props.theme.transitions[0]};
 `;
 
 export type ThemeType = 'dark' | 'light';
