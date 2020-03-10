@@ -20,6 +20,7 @@ const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   font-size: 1rem;
   color: white;
+  padding: 20px 0;
 `;
 
 const Title = styled(StyledNavLink)`
