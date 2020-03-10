@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled, { DefaultTheme, ThemeProvider } from 'styled-components';
 import { BrowserRouter, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import Paper from './styled-components/Paper';
+import Lightbox from './styled-components/Lightbox';
 
 const lightTheme: DefaultTheme = {
   borderRadius: '4px',
@@ -34,6 +34,10 @@ const Main = styled.main`
   transition: background ${props => props.theme.transitions[0]};
 `;
 
+const Image = styled(Lightbox)`
+  width: 400px;
+`;
+
 export type ThemeType = 'dark' | 'light';
 
 const fromLocalStorage = localStorage.getItem('themeType');
@@ -52,10 +56,9 @@ function App() {
       <Main>
         <BrowserRouter>
           <NavBar setThemeType={setThemeType} themeType={themeType} />
-          <Route path="/">
-            <Paper>Test</Paper>
-          </Route>
+          <Route path="/" />
         </BrowserRouter>
+        <Image src="https://images.unsplash.com/photo-1582739381894-eb1fcec7265a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
       </Main>
     </ThemeProvider>
   );

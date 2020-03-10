@@ -13,17 +13,18 @@ const AppBar = styled.nav`
   align-items: center;
   position: sticky;
   top: 0;
+  z-index: 1;
 `;
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: white;
 `;
 
 const Title = styled(StyledNavLink)`
-  font-size: 3rem;
-  padding: 20px 60px 20px 20px;
+  font-size: 2rem;
+  padding: 10px 60px 10px 20px;
 `;
 
 const Spacer = styled.span`
