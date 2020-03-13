@@ -6,7 +6,6 @@
  */
 
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
@@ -67,10 +66,6 @@ const Layout: React.FC = ({ children }) => {
       </Main>
     </Wrapper>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout
