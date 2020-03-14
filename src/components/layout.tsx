@@ -6,17 +6,32 @@
  */
 
 import React, { useState } from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import styled from 'styled-components'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import Header from './header'
 import './layout.css'
 import Typography from '../styled-components/Typography'
 
-const Drawer = styled.div`
+const Drawer = styled(motion.div)`
   background-color: #121212;
   height: 100vh;
   color: white;
+  overflow: hidden;
+  box-shadow: 0 5px 5px black inset;
+`
+
+const NavLink = styled(Typography)`
+  white-space: nowrap;
+  overflow: hidden;
+  text-decoration: none;
+  color: ${props => props.theme.colors.primary[0]};
+`
+const NavLinkWrapper = styled.div`
+  padding: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  width: 100%;
 `
 
 const Wrapper = styled.div`
@@ -42,11 +57,31 @@ const Layout: React.FC = ({ children }) => {
 
   return (
     <Wrapper>
-      {open && (
-        <Drawer>
-          <Typography>This is a drawer</Typography>
-        </Drawer>
-      )}
+      <AnimatePresence>
+        {open && (
+          <Drawer
+            animate={{ width: '400px' }}
+            style={{ width: 0 }}
+            exit={{ width: 0 }}
+          >
+            <NavLinkWrapper>
+              <NavLink as={Link} to="/" onClick={() => setOpen(false)}>
+                Home
+              </NavLink>
+            </NavLinkWrapper>
+            <NavLinkWrapper>
+              <NavLink as={Link} to="/gallery" onClick={() => setOpen(false)}>
+                Gallery
+              </NavLink>
+            </NavLinkWrapper>
+            <NavLinkWrapper>
+              <NavLink as={Link} to="/about" onClick={() => setOpen(false)}>
+                About
+              </NavLink>
+            </NavLinkWrapper>
+          </Drawer>
+        )}
+      </AnimatePresence>
       <Main>
         <Header siteTitle={data.site.siteMetadata.title} setOpen={setOpen} />
         <div
