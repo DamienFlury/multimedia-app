@@ -20,6 +20,7 @@ const theme: DefaultTheme = {
     primary: ['#007bff'],
     secondary: [''],
   },
+  shadows: ['0 2px 3px rgba(0, 0, 0, 0.5)', '0 5px 15px rgba(0, 0, 0, 0.3)'],
 }
 
 const Drawer = styled(motion.div)`
@@ -28,6 +29,8 @@ const Drawer = styled(motion.div)`
   color: white;
   overflow: hidden;
   box-shadow: 0 5px 5px black inset;
+  position: sticky;
+  top: 0;
 `
 
 const NavLink = styled(Typography)`
@@ -96,7 +99,6 @@ const Layout: React.FC = ({ children }) => {
           <div
             style={{
               margin: `0 auto`,
-              maxWidth: 960,
               padding: `0 1.0875rem 1.45rem`,
             }}
           >

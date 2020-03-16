@@ -6,6 +6,9 @@ import Typography from '../styled-components/Typography'
 const StyledHeader = styled.header`
   background: ${props => props.theme.colors.primary[0]};
   margin-bottom: 1.45rem;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 `
 
 const Toolbar = styled.div`

@@ -10,5 +10,6 @@ declare module 'styled-components' {
       primary: string[]
       secondary: string[]
     }
+    shadows: string[]
   }
 }

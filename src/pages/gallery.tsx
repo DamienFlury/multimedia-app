@@ -14,6 +14,7 @@ import styled from 'styled-components'
 import Img from 'gatsby-image'
 import { graphql, useStaticQuery } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
+import Card from '../styled-components/Card'
 
 const ImageWrapper = styled.div`
   display: flex;
@@ -33,7 +34,6 @@ const Image = styled.div<ImageProps>`
   margin: 10px;
   border-radius: 5px;
   background-color: #fff;
-  background: url(${props => props.src});
   background-size: cover;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease-in-out;
@@ -55,8 +55,8 @@ const Image = styled.div<ImageProps>`
 `
 
 const StyledBgImage = styled(BackgroundImage)`
-  width: 200px;
-  height: 150px;
+  width: 300px;
+  height: 200px;
   background-size: cover;
   background-position: center;
 `
@@ -92,6 +92,27 @@ const Gallery: React.FC = () => {
           }
         }
       }
+      mountains: file(relativePath: { eq: "mountains.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      skiLift: file(relativePath: { eq: "ski-lift.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      skiLift2: file(relativePath: { eq: "ski-lift2.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `)
 
@@ -100,18 +121,27 @@ const Gallery: React.FC = () => {
       <SEO title="Gallery" />
       <Typography variant="h3">Gallery</Typography>
       <ImageWrapper>
-        <Image>
+        <Card>
           <StyledBgImage fluid={data.first.childImageSharp.fluid} />
-        </Image>
-        <Image>
+        </Card>
+        <Card>
           <StyledBgImage fluid={data.cocaCola.childImageSharp.fluid} />
-        </Image>
-        <Image>
+        </Card>
+        <Card>
           <StyledBgImage fluid={data.sis.childImageSharp.fluid} />
-        </Image>
-        <Image>
+        </Card>
+        <Card>
           <StyledBgImage fluid={data.mom.childImageSharp.fluid} />
-        </Image>
+        </Card>
+        <Card>
+          <StyledBgImage fluid={data.mountains.childImageSharp.fluid} />
+        </Card>
+        <Card>
+          <StyledBgImage fluid={data.skiLift.childImageSharp.fluid} />
+        </Card>
+        <Card>
+          <StyledBgImage fluid={data.skiLift2.childImageSharp.fluid} />
+        </Card>
         {/* <Image src={Image1} /> */}
         {/* <Image src={Image2} />
         <Image src={Image3} />
