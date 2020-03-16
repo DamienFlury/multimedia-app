@@ -8,7 +8,7 @@ import Img from 'gatsby-image'
 import styled from 'styled-components'
 
 const ParallaxContainer = styled.div`
-  height: 600px;
+  max-height: 600px;
   overflow: hidden;
 `
 
