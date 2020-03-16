@@ -13,6 +13,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Header from './header'
 import './layout.css'
 import Typography from '../styled-components/Typography'
+import { ParallaxProvider } from 'react-scroll-parallax'
 
 const theme: DefaultTheme = {
   borderRadius: '4px',
@@ -68,49 +69,58 @@ const Layout: React.FC = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Wrapper>
-        <AnimatePresence>
-          {open && (
-            <Drawer
-              animate={{ width: '400px' }}
-              style={{ width: 0 }}
-              exit={{ width: 0 }}
+      <ParallaxProvider>
+        <Wrapper>
+          <AnimatePresence>
+            {open && (
+              <Drawer
+                animate={{ width: '400px' }}
+                style={{ width: 0 }}
+                exit={{ width: 0 }}
+              >
+                <NavLinkWrapper>
+                  <NavLink as={Link} to="/" onClick={() => setOpen(false)}>
+                    Home
+                  </NavLink>
+                </NavLinkWrapper>
+                <NavLinkWrapper>
+                  <NavLink
+                    as={Link}
+                    to="/gallery"
+                    onClick={() => setOpen(false)}
+                  >
+                    Gallery
+                  </NavLink>
+                </NavLinkWrapper>
+                <NavLinkWrapper>
+                  <NavLink as={Link} to="/about" onClick={() => setOpen(false)}>
+                    About
+                  </NavLink>
+                </NavLinkWrapper>
+              </Drawer>
+            )}
+          </AnimatePresence>
+          <Main>
+            <Header
+              siteTitle={data.site.siteMetadata.title}
+              setOpen={setOpen}
+            />
+            <div
+              style={{
+                margin: `0 auto`,
+                padding: `0 1.0875rem 1.45rem`,
+              }}
             >
-              <NavLinkWrapper>
-                <NavLink as={Link} to="/" onClick={() => setOpen(false)}>
-                  Home
-                </NavLink>
-              </NavLinkWrapper>
-              <NavLinkWrapper>
-                <NavLink as={Link} to="/gallery" onClick={() => setOpen(false)}>
-                  Gallery
-                </NavLink>
-              </NavLinkWrapper>
-              <NavLinkWrapper>
-                <NavLink as={Link} to="/about" onClick={() => setOpen(false)}>
-                  About
-                </NavLink>
-              </NavLinkWrapper>
-            </Drawer>
-          )}
-        </AnimatePresence>
-        <Main>
-          <Header siteTitle={data.site.siteMetadata.title} setOpen={setOpen} />
-          <div
-            style={{
-              margin: `0 auto`,
-              padding: `0 1.0875rem 1.45rem`,
-            }}
-          >
-            <main>{children}</main>
-            <footer>
-              © {new Date().getFullYear()}, Built with
-              {` `}
-              <a href="https://www.gatsbyjs.org">Gatsby</a>
-            </footer>
-          </div>
-        </Main>
-      </Wrapper>
+              <main>{children}</main>
+              <footer>
+                © {new Date().getFullYear()}, Built with
+                {` `}
+                <a href="https://www.gatsbyjs.org">Gatsby</a>
+              </footer>
+            </div>
+          </Main>
+        </Wrapper>
+      </ParallaxProvider>
     </ThemeProvider>
   )
 }
