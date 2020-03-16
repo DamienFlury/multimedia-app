@@ -2,7 +2,7 @@
   "name": "multimedia-app",
   "private": true,
   "description": "An app with different images and videos (skiing)",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Damien Flury",
   "dependencies": {
     "@types/react-helmet": "^5.0.15",
