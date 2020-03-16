@@ -7,12 +7,20 @@
 
 import React, { useState } from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
-import styled from 'styled-components'
+import styled, { DefaultTheme, ThemeProvider } from 'styled-components'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import Header from './header'
 import './layout.css'
 import Typography from '../styled-components/Typography'
+
+const theme: DefaultTheme = {
+  borderRadius: '4px',
+  colors: {
+    primary: ['#007bff'],
+    secondary: [''],
+  },
+}
 
 const Drawer = styled(motion.div)`
   background-color: #121212;
@@ -56,50 +64,52 @@ const Layout: React.FC = ({ children }) => {
   const [open, setOpen] = useState(false)
 
   return (
-    <Wrapper>
-      <AnimatePresence>
-        {open && (
-          <Drawer
-            animate={{ width: '400px' }}
-            style={{ width: 0 }}
-            exit={{ width: 0 }}
+    <ThemeProvider theme={theme}>
+      <Wrapper>
+        <AnimatePresence>
+          {open && (
+            <Drawer
+              animate={{ width: '400px' }}
+              style={{ width: 0 }}
+              exit={{ width: 0 }}
+            >
+              <NavLinkWrapper>
+                <NavLink as={Link} to="/" onClick={() => setOpen(false)}>
+                  Home
+                </NavLink>
+              </NavLinkWrapper>
+              <NavLinkWrapper>
+                <NavLink as={Link} to="/gallery" onClick={() => setOpen(false)}>
+                  Gallery
+                </NavLink>
+              </NavLinkWrapper>
+              <NavLinkWrapper>
+                <NavLink as={Link} to="/about" onClick={() => setOpen(false)}>
+                  About
+                </NavLink>
+              </NavLinkWrapper>
+            </Drawer>
+          )}
+        </AnimatePresence>
+        <Main>
+          <Header siteTitle={data.site.siteMetadata.title} setOpen={setOpen} />
+          <div
+            style={{
+              margin: `0 auto`,
+              maxWidth: 960,
+              padding: `0 1.0875rem 1.45rem`,
+            }}
           >
-            <NavLinkWrapper>
-              <NavLink as={Link} to="/" onClick={() => setOpen(false)}>
-                Home
-              </NavLink>
-            </NavLinkWrapper>
-            <NavLinkWrapper>
-              <NavLink as={Link} to="/gallery" onClick={() => setOpen(false)}>
-                Gallery
-              </NavLink>
-            </NavLinkWrapper>
-            <NavLinkWrapper>
-              <NavLink as={Link} to="/about" onClick={() => setOpen(false)}>
-                About
-              </NavLink>
-            </NavLinkWrapper>
-          </Drawer>
-        )}
-      </AnimatePresence>
-      <Main>
-        <Header siteTitle={data.site.siteMetadata.title} setOpen={setOpen} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0 1.0875rem 1.45rem`,
-          }}
-        >
-          <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
-        </div>
-      </Main>
-    </Wrapper>
+            <main>{children}</main>
+            <footer>
+              © {new Date().getFullYear()}, Built with
+              {` `}
+              <a href="https://www.gatsbyjs.org">Gatsby</a>
+            </footer>
+          </div>
+        </Main>
+      </Wrapper>
+    </ThemeProvider>
   )
 }
 
