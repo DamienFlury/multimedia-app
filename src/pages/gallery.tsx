@@ -17,45 +17,18 @@ import BackgroundImage from 'gatsby-background-image'
 import Card from '../styled-components/Card'
 
 const ImageWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  margin-top: 20px;
 `
 
 type ImageProps = {
   src?: string
 }
 
-const Image = styled.div<ImageProps>`
-  position: relative;
-  display: inline-block;
-  width: 200px;
-  height: 150px;
-  margin: 10px;
-  border-radius: 5px;
-  background-color: #fff;
-  background-size: cover;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease-in-out;
-  &::after {
-    top: 0;
-    content: '';
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: opacity 0.3s ease-in-out;
-  }
-  &:hover::after {
-    opacity: 1;
-  }
-`
-
 const StyledBgImage = styled(BackgroundImage)`
-  width: 300px;
+  width: 100%;
   height: 200px;
   background-size: cover;
   background-position: center;

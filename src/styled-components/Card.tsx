@@ -5,7 +5,6 @@ import Paper from './Paper'
 const CardWrapper = styled(Paper)`
   position: relative;
   display: inline-block;
-  margin: 10px;
   background-color: #fff;
   transition: all 0.3s ease-in-out;
   &::after {
