@@ -86,6 +86,13 @@ const Gallery: React.FC = () => {
           }
         }
       }
+      tower: file(relativePath: { eq: "tower.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 600) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `)
 
@@ -114,6 +121,9 @@ const Gallery: React.FC = () => {
         </Card>
         <Card>
           <StyledBgImage fluid={data.skiLift2.childImageSharp.fluid} />
+        </Card>
+        <Card>
+          <StyledBgImage fluid={data.tower.childImageSharp.fluid} />
         </Card>
         {/* <Image src={Image1} /> */}
         {/* <Image src={Image2} />

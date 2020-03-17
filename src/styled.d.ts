@@ -9,6 +9,11 @@ declare module 'styled-components' {
     colors: {
       primary: string[]
       secondary: string[]
+      background: {
+        main: string[]
+        inverse: string[]
+      }
+      foreground: string
     }
     shadows: string[]
   }

@@ -20,16 +20,20 @@ const theme: DefaultTheme = {
   colors: {
     primary: ['#007bff'],
     secondary: [''],
+    background: {
+      main: ['#232323'],
+      inverse: ['#ffffff'],
+    },
+    foreground: '#ffffff',
   },
   shadows: ['0 2px 3px rgba(0, 0, 0, 0.5)', '0 5px 15px rgba(0, 0, 0, 0.3)'],
 }
 
 const Drawer = styled(motion.div)`
-  background-color: #121212;
+  background-color: ${props => props.theme.colors.background.inverse[0]};
   height: 100vh;
   color: white;
   overflow: hidden;
-  box-shadow: 0 5px 5px black inset;
   position: sticky;
   top: 0;
 `
@@ -52,6 +56,10 @@ const Wrapper = styled.div`
 
 const Main = styled.main`
   width: 100%;
+  min-height: 100vh;
+  background: ${props => props.theme.colors.background.main[0]};
+  z-index: 1;
+  box-shadow: ${props => props.theme.shadows[1]};
 `
 
 const Layout: React.FC = ({ children }) => {

@@ -19,11 +19,13 @@ const getFontSize = (variant?: Variant): string => {
 
 type Props = {
   variant?: Variant
+  color?: string
 }
 
 const Typography = styled.div<Props>`
   font-family: 'Montserrat', sans-serif;
   font-size: ${props => getFontSize(props.variant)};
+  color: ${props => props.color ?? props.theme.colors.foreground};
 `
 
 export default Typography
