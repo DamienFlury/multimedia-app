@@ -3,15 +3,6 @@ import Layout from '../components/layout'
 import Typography from '../styled-components/Typography'
 import SEO from '../components/seo'
 import styled from 'styled-components'
-// import Image1 from '../images/20200314_102105.jpg'
-// import Image2 from '../images/20200314_102110.jpg'
-// import Image3 from '../images/20200314_102324.jpg'
-// import Image4 from '../images/20200314_111709.jpg'
-// import Image5 from '../images/20200314_120743.jpg'
-// import Image6 from '../images/20200314_120758.jpg'
-// import Image7 from '../images/20200314_120811.jpg'
-// import Image8 from '../images/20200314_121015.jpg'
-import Img from 'gatsby-image'
 import { graphql, useStaticQuery } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 import Card from '../styled-components/Card'
@@ -125,14 +116,6 @@ const Gallery: React.FC = () => {
         <Card>
           <StyledBgImage fluid={data.tower.childImageSharp.fluid} />
         </Card>
-        {/* <Image src={Image1} /> */}
-        {/* <Image src={Image2} />
-        <Image src={Image3} />
-        <Image src={Image4} />
-        <Image src={Image5} />
-        <Image src={Image8} />
-        <Image src={Image6} />
-        <Image src={Image7} /> */}
       </ImageWrapper>
     </Layout>
   )
