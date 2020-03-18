@@ -43,12 +43,36 @@ const NavLink = styled(Typography)`
   overflow: hidden;
   text-decoration: none;
   color: ${props => props.theme.colors.primary[0]};
+  display: flex;
+`
+
+const NavLinkTitle = styled.span`
+  margin-left: 10px;
 `
 const NavLinkWrapper = styled.div`
-  padding: 20px;
+  padding: 0 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   width: 100%;
 `
+
+type CustomNavLinkProps = {
+  icon?: string
+  to: string
+  onClick: () => void
+}
+const CustomNavLink: React.FC<CustomNavLinkProps> = ({
+  children,
+  icon,
+  to,
+  onClick,
+}) => (
+  <NavLinkWrapper>
+    <NavLink as={Link} to={to} onClick={onClick}>
+      <i className="material-icons">{icon}</i>
+      <NavLinkTitle>{children}</NavLinkTitle>
+    </NavLink>
+  </NavLinkWrapper>
+)
 
 const Wrapper = styled.div`
   display: flex;
@@ -86,25 +110,27 @@ const Layout: React.FC = ({ children }) => {
                 style={{ width: 0 }}
                 exit={{ width: 0 }}
               >
-                <NavLinkWrapper>
-                  <NavLink as={Link} to="/" onClick={() => setOpen(false)}>
-                    Home
-                  </NavLink>
-                </NavLinkWrapper>
-                <NavLinkWrapper>
-                  <NavLink
-                    as={Link}
-                    to="/gallery"
-                    onClick={() => setOpen(false)}
-                  >
-                    Gallery
-                  </NavLink>
-                </NavLinkWrapper>
-                <NavLinkWrapper>
-                  <NavLink as={Link} to="/about" onClick={() => setOpen(false)}>
-                    About
-                  </NavLink>
-                </NavLinkWrapper>
+                <CustomNavLink
+                  icon="home"
+                  onClick={() => setOpen(false)}
+                  to="/"
+                >
+                  Home
+                </CustomNavLink>
+                <CustomNavLink
+                  icon="photo_library"
+                  onClick={() => setOpen(false)}
+                  to="/gallery"
+                >
+                  Gallery
+                </CustomNavLink>
+                <CustomNavLink
+                  to="/about"
+                  onClick={() => setOpen(false)}
+                  icon="info"
+                >
+                  About
+                </CustomNavLink>
               </Drawer>
             )}
           </AnimatePresence>
