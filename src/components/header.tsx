@@ -14,7 +14,7 @@ const StyledHeader = styled.header`
 const Toolbar = styled.div`
   margin: 0 auto;
   max-width: 960;
-  padding: 1.45rem 1.0875rem;
+  padding: 0 1.0875rem;
   display: flex;
   align-items: center;
 `

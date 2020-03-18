@@ -26,6 +26,8 @@ const Typography = styled.div<Props>`
   font-family: 'Montserrat', sans-serif;
   font-size: ${props => getFontSize(props.variant)};
   color: ${props => props.color ?? props.theme.colors.foreground};
+  margin: 20px 0;
+  line-height: 1.5;
 `
 
 export default Typography

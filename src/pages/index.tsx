@@ -6,6 +6,7 @@ import SEO from '../components/seo'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
+import Typography from '../styled-components/Typography'
 
 const ParallaxContainer = styled.div`
   max-height: 600px;
@@ -27,8 +28,8 @@ const IndexPage: React.FC = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      Welcome{' '}
-      <p>
+      <Typography variant="h1">Welcome </Typography>
+      <Typography>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. A architecto
         tempora, nihil repudiandae at quisquam, expedita blanditiis inventore
         cupiditate numquam sint dicta porro. Assumenda dolore est non!
@@ -41,7 +42,7 @@ const IndexPage: React.FC = () => {
         Saepe, iste impedit, eaque asperiores voluptates amet autem fugiat eos
         sapiente obcaecati tempore distinctio perspiciatis voluptate
         exercitationem facere nostrum! Eveniet, tenetur!
-      </p>
+      </Typography>
       <ParallaxContainer>
         <Parallax y={[-20, 20]}>
           <Img fluid={data.image.childImageSharp.fluid} />
