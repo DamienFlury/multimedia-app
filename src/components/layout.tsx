@@ -51,7 +51,7 @@ const NavLinkTitle = styled.span`
 `
 const NavLinkWrapper = styled.div`
   padding: 0 20px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   width: 100%;
 `
 
