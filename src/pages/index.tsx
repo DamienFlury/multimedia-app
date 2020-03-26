@@ -7,6 +7,10 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import Typography from '../styled-components/Typography'
+import ImageSlider from '../styled-components/ImageSlider'
+import First from '../images/first.jpg'
+import CocaCola from '../images/coca-cola.jpg'
+import Mountains from '../images/mountains.jpg'
 
 const ParallaxContainer = styled.div`
   max-height: 600px;
@@ -29,6 +33,7 @@ const IndexPage: React.FC = () => {
     <Layout>
       <SEO title="Home" />
       <Typography variant="h1">Welcome </Typography>
+      <ImageSlider images={[First, Mountains, CocaCola]} />
       <Typography>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. A architecto
         tempora, nihil repudiandae at quisquam, expedita blanditiis inventore

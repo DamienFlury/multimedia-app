@@ -31,7 +31,7 @@ const OverflowFix = styled.div`
 `
 
 const Card: React.FC = ({ children }) => (
-  <CardWrapper>
+  <CardWrapper positionTransition>
     <OverflowFix>{children}</OverflowFix>
   </CardWrapper>
 )
