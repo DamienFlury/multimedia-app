@@ -1,7 +1,9 @@
 import { Link } from 'gatsby'
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import Typography from '../styled-components/Typography'
+import Spacer from '../styled-components/Spacer'
+import { CustomThemeContext } from '../providers/CustomThemeProvider'
 
 const StyledHeader = styled.header`
   background: ${props => props.theme.colors.primary[0]};
@@ -33,25 +35,38 @@ type Props = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Header: React.FC<Props> = ({ siteTitle, setOpen }) => (
-  <StyledHeader>
-    <Toolbar>
-      <IconButton onClick={() => setOpen(prev => !prev)}>
-        <i className="material-icons md-36">menu</i>
-      </IconButton>
-      <Typography variant="h2">
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
+const Header: React.FC<Props> = ({ siteTitle, setOpen }) => {
+  const { setThemeType, themeType } = useContext(CustomThemeContext)
+  return (
+    <StyledHeader>
+      <Toolbar>
+        <IconButton onClick={() => setOpen(prev => !prev)}>
+          <i className="material-icons md-36">menu</i>
+        </IconButton>
+        <Typography variant="h2">
+          <Link
+            to="/"
+            style={{
+              color: `white`,
+              textDecoration: `none`,
+            }}
+          >
+            {siteTitle}
+          </Link>
+        </Typography>
+        <Spacer />
+        <IconButton
+          onClick={() =>
+            setThemeType(prev => (prev === 'light' ? 'dark' : 'light'))
+          }
         >
-          {siteTitle}
-        </Link>
-      </Typography>
-    </Toolbar>
-  </StyledHeader>
-)
+          <i className="material-icons md-36">
+            {themeType === 'light' ? 'brightness_2' : 'brightness_5'}
+          </i>
+        </IconButton>
+      </Toolbar>
+    </StyledHeader>
+  )
+}
 
 export default Header

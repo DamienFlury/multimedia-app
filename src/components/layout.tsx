@@ -14,20 +14,7 @@ import Header from './header'
 import './layout.css'
 import Typography from '../styled-components/Typography'
 import { ParallaxProvider } from 'react-scroll-parallax'
-
-const theme: DefaultTheme = {
-  borderRadius: '4px',
-  colors: {
-    primary: ['#007bff'],
-    secondary: [''],
-    background: {
-      main: ['#232323'],
-      inverse: ['#ffffff'],
-    },
-    foreground: '#ffffff',
-  },
-  shadows: ['0 2px 3px rgba(0, 0, 0, 0.5)', '0 5px 15px rgba(0, 0, 0, 0.3)'],
-}
+import CustomThemeProvider from '../providers/CustomThemeProvider'
 
 const Drawer = styled(motion.div)`
   background-color: ${props => props.theme.colors.background.inverse[0]};
@@ -100,7 +87,7 @@ const Layout: React.FC = ({ children }) => {
   const [open, setOpen] = useState(false)
 
   return (
-    <ThemeProvider theme={theme}>
+    <CustomThemeProvider>
       <ParallaxProvider>
         <Wrapper>
           <AnimatePresence>
@@ -157,7 +144,7 @@ const Layout: React.FC = ({ children }) => {
           </Main>
         </Wrapper>
       </ParallaxProvider>
-    </ThemeProvider>
+    </CustomThemeProvider>
   )
 }
 
