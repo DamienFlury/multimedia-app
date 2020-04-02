@@ -7,14 +7,13 @@
 
 import React, { useState } from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
-import styled, { DefaultTheme, ThemeProvider } from 'styled-components'
+import styled from 'styled-components'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import Header from './header'
 import './layout.css'
 import Typography from '../styled-components/Typography'
 import { ParallaxProvider } from 'react-scroll-parallax'
-import CustomThemeProvider from '../providers/CustomThemeProvider'
 
 const Drawer = styled(motion.div)`
   background-color: ${props => props.theme.colors.background.inverse[0]};
@@ -71,6 +70,7 @@ const Main = styled.main`
   background: ${props => props.theme.colors.background.main[0]};
   z-index: 1;
   box-shadow: ${props => props.theme.shadows[1]};
+  transition: 0.2s;
 `
 
 const Layout: React.FC = ({ children }) => {
@@ -87,64 +87,55 @@ const Layout: React.FC = ({ children }) => {
   const [open, setOpen] = useState(false)
 
   return (
-    <CustomThemeProvider>
-      <ParallaxProvider>
-        <Wrapper>
-          <AnimatePresence>
-            {open && (
-              <Drawer
-                animate={{ width: '400px' }}
-                style={{ width: 0 }}
-                exit={{ width: 0 }}
-              >
-                <CustomNavLink
-                  icon="home"
-                  onClick={() => setOpen(false)}
-                  to="/"
-                >
-                  Home
-                </CustomNavLink>
-                <CustomNavLink
-                  icon="photo_library"
-                  onClick={() => setOpen(false)}
-                  to="/gallery"
-                >
-                  Gallery
-                </CustomNavLink>
-                <CustomNavLink
-                  to="/about"
-                  onClick={() => setOpen(false)}
-                  icon="info"
-                >
-                  About
-                </CustomNavLink>
-              </Drawer>
-            )}
-          </AnimatePresence>
-          <Main>
-            <Header
-              siteTitle={data.site.siteMetadata.title}
-              setOpen={setOpen}
-            />
-            <div
-              style={{
-                margin: `0 auto`,
-                padding: `0 1.0875rem 1.45rem`,
-              }}
+    <ParallaxProvider>
+      <Wrapper>
+        <AnimatePresence>
+          {open && (
+            <Drawer
+              animate={{ width: '400px' }}
+              style={{ width: 0 }}
+              exit={{ width: 0 }}
             >
-              <main>{children}</main>
-              <footer>
-                <Typography>
-                  © {new Date().getFullYear()}, Built with
-                  {` `}
-                  <a href="https://www.gatsbyjs.org">Gatsby</a>
-                </Typography>
-              </footer>
-            </div>
-          </Main>
-        </Wrapper>
-      </ParallaxProvider>
-    </CustomThemeProvider>
+              <CustomNavLink icon="home" onClick={() => setOpen(false)} to="/">
+                Home
+              </CustomNavLink>
+              <CustomNavLink
+                icon="photo_library"
+                onClick={() => setOpen(false)}
+                to="/gallery"
+              >
+                Gallery
+              </CustomNavLink>
+              <CustomNavLink
+                to="/about"
+                onClick={() => setOpen(false)}
+                icon="info"
+              >
+                About
+              </CustomNavLink>
+            </Drawer>
+          )}
+        </AnimatePresence>
+        <Main>
+          <Header siteTitle={data.site.siteMetadata.title} setOpen={setOpen} />
+          <div
+            style={{
+              margin: `0 auto`,
+              padding: `0 1.0875rem 1.45rem`,
+            }}
+          >
+            <main>{children}</main>
+            <footer>
+              <Typography>
+                © {new Date().getFullYear()}, Built with
+                {` `}
+                <a href="https://www.gatsbyjs.org">Gatsby</a>
+              </Typography>
+            </footer>
+          </div>
+        </Main>
+      </Wrapper>
+    </ParallaxProvider>
   )
 }
 

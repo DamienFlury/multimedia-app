@@ -1,6 +1,6 @@
 import React from 'react'
+import CustomThemeProvider from './src/providers/CustomThemeProvider'
 
 export const wrapRootElement = ({ element }) => {
-  console.log('Browser js')
-  return element
+  return <CustomThemeProvider>{element}</CustomThemeProvider>
 }
