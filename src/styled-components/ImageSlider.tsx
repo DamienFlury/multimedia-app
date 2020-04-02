@@ -22,7 +22,11 @@ const Image = styled(motion.img)`
 const ArrowButton = styled.button`
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
   z-index: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
 `
 
 const PreviousButton = styled(ArrowButton)`
@@ -54,7 +58,9 @@ const ImageSlider: React.FC<Props> = ({ images }) => {
 
   return (
     <Wrapper>
-      <PreviousButton onClick={increaseIndex}>Back</PreviousButton>
+      <PreviousButton onClick={increaseIndex}>
+        <i className="material-icons md-36">chevron_left</i>
+      </PreviousButton>
       <AnimatePresence>
         <Image
           src={images[index]}
@@ -64,7 +70,9 @@ const ImageSlider: React.FC<Props> = ({ images }) => {
           key={images[index]}
         />
       </AnimatePresence>
-      <NextButton onClick={lowerIndex}>Next</NextButton>
+      <NextButton onClick={lowerIndex}>
+        <i className="material-icons md-36">chevron_right</i>
+      </NextButton>
     </Wrapper>
   )
 }
