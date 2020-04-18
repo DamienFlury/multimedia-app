@@ -107,6 +107,13 @@ const Layout: React.FC = ({ children }) => {
                 Gallery
               </CustomNavLink>
               <CustomNavLink
+                to="/technologies"
+                onClick={() => setOpen(false)}
+                icon="code"
+              >
+                Technologies
+              </CustomNavLink>
+              <CustomNavLink
                 to="/about"
                 onClick={() => setOpen(false)}
                 icon="info"
