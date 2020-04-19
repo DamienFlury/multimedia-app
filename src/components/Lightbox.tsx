@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 import { motion, useDomEvent } from 'framer-motion'
+import Image, { FluidObject } from 'gatsby-image'
 
 type Props = {
   open?: boolean
@@ -27,7 +28,7 @@ const Shade = styled(motion.div)<Props>`
   z-index: ${props => (props.open ? 2 : 1)};
 `
 
-const Image = styled(motion.img)<Props>`
+const ImageWrapper = styled(motion.div)<Props>`
   position: ${props => (props.open ? 'fixed' : 'absolute')};
   top: 0;
   left: 0;
@@ -40,13 +41,22 @@ const Image = styled(motion.img)<Props>`
   z-index: ${props => (props.open ? 2 : 1)};
 `
 
+const StyledImage = styled(Image)`
+  width: 100%;
+  height: 100%;
+`
+
 const transition = {
   type: 'spring',
   damping: 25,
   stiffness: 120,
 }
 
-const Lightbox: React.FC = () => {
+type LightboxProps = {
+  fluid: FluidObject | FluidObject[] | undefined
+}
+
+const Lightbox: React.FC<LightboxProps> = ({ fluid }) => {
   const [open, setOpen] = useState(false)
 
   useDomEvent(useRef(window as any), 'scroll', () => open && setOpen(false))
@@ -59,13 +69,13 @@ const Lightbox: React.FC = () => {
         transition={transition}
         onClick={() => setOpen(false)}
       />
-      <Image
+      <ImageWrapper
         open={open}
-        src="https://uiaa-web.azureedge.net/wp-content/uploads/2017/11/RTM19-banner-web.jpg"
-        alt="Some weird image"
         onClick={() => setOpen(!open)}
         layoutTransition={transition}
-      />
+      >
+        <StyledImage fluid={fluid} alt="Some weird image" />
+      </ImageWrapper>
     </ImageContainer>
   )
 }

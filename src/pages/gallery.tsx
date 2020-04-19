@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { graphql, useStaticQuery } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 import Card from '../styled-components/Card'
+import Lightbox from '../components/Lightbox'
 
 const ImageWrapper = styled.div`
   display: grid;
@@ -79,7 +80,7 @@ const Gallery: React.FC = () => {
       }
       tower: file(relativePath: { eq: "tower.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -116,6 +117,7 @@ const Gallery: React.FC = () => {
         <Card>
           <StyledBgImage fluid={data.tower.childImageSharp.fluid} />
         </Card>
+        <Lightbox fluid={data.tower.childImageSharp.fluid} />
       </ImageWrapper>
     </Layout>
   )
