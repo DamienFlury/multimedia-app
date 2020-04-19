@@ -11,10 +11,15 @@ import ImageSlider from '../styled-components/ImageSlider'
 import First from '../images/first.jpg'
 import CocaCola from '../images/coca-cola.jpg'
 import Mountains from '../images/mountains.jpg'
+import Lightbox from '../components/Lightbox'
 
 const ParallaxContainer = styled.div`
   max-height: 600px;
   overflow: hidden;
+`
+
+const ImageWrapper = styled.div`
+  width: 400px;
 `
 
 const IndexPage: React.FC = () => {
@@ -33,6 +38,9 @@ const IndexPage: React.FC = () => {
     <Layout>
       <SEO title="Home" />
       <Typography variant="h1">Welcome </Typography>
+      <ImageWrapper>
+        <Lightbox />
+      </ImageWrapper>
       <ImageSlider images={[First, Mountains, CocaCola]} />
       <Typography>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. A architecto
