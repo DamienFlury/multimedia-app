@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
-import { ThemeProvider, DefaultTheme } from 'styled-components'
+import React, { useState, useEffect } from 'react';
+import { ThemeProvider, DefaultTheme } from 'styled-components';
 
-type ThemeType = 'dark' | 'light'
+type ThemeType = 'dark' | 'light';
 
 type ContextState = {
-  themeType: ThemeType
-  setThemeType: React.Dispatch<React.SetStateAction<ThemeType>>
-}
+  themeType: ThemeType;
+  setThemeType: React.Dispatch<React.SetStateAction<ThemeType>>;
+};
 
 export const CustomThemeContext = React.createContext<ContextState>({
   themeType: 'light',
   setThemeType: () => {},
-})
+});
 
 const darkTheme: DefaultTheme = {
   borderRadius: '4px',
@@ -19,13 +19,13 @@ const darkTheme: DefaultTheme = {
     primary: ['#007bff'],
     secondary: [''],
     background: {
-      main: ['#232323'],
+      main: ['#232323', '#292929'],
       inverse: ['#ffffff'],
     },
     foreground: '#ffffff',
   },
   shadows: ['0 2px 3px rgba(0, 0, 0, 0.5)', '0 5px 15px rgba(0, 0, 0, 0.3)'],
-}
+};
 
 const lightTheme: DefaultTheme = {
   borderRadius: '4px',
@@ -39,10 +39,16 @@ const lightTheme: DefaultTheme = {
     foreground: '#232323',
   },
   shadows: ['0 2px 3px rgba(0, 0, 0, 0.5)', '0 5px 15px rgba(0, 0, 0, 0.3)'],
-}
+};
 
 const CustomThemeProvider: React.FC = ({ children }) => {
-  const [themeType, setThemeType] = useState<ThemeType>('light')
+  const [themeType, setThemeType] = useState<ThemeType>(
+    () => (localStorage.getItem('themeType') as ThemeType) ?? 'light'
+  );
+
+  useEffect(() => {
+    localStorage.setItem('themeType', themeType);
+  }, [themeType]);
 
   return (
     <CustomThemeContext.Provider value={{ themeType, setThemeType }}>
@@ -50,7 +56,7 @@ const CustomThemeProvider: React.FC = ({ children }) => {
         {children}
       </ThemeProvider>
     </CustomThemeContext.Provider>
-  )
-}
+  );
+};
 
-export default CustomThemeProvider
+export default CustomThemeProvider;
