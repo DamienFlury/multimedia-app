@@ -7,6 +7,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 import Card from '../styled-components/Card'
 import Lightbox from '../components/Lightbox'
+import Diashow from '../components/Diashow'
 
 const ImageWrapper = styled.div`
   display: grid;
@@ -31,49 +32,49 @@ const Gallery: React.FC = () => {
     query {
       first: file(relativePath: { eq: "first.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       cocaCola: file(relativePath: { eq: "coca-cola.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       sis: file(relativePath: { eq: "sis.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       mom: file(relativePath: { eq: "mom.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       mountains: file(relativePath: { eq: "mountains.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       skiLift: file(relativePath: { eq: "ski-lift.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       skiLift2: file(relativePath: { eq: "ski-lift2.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -82,6 +83,13 @@ const Gallery: React.FC = () => {
         childImageSharp {
           fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      towerFixed: file(relativePath: { eq: "tower.jpg" }) {
+        childImageSharp {
+          fixed(width: 1200) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
@@ -117,7 +125,6 @@ const Gallery: React.FC = () => {
         <Card>
           <StyledBgImage fluid={data.tower.childImageSharp.fluid} />
         </Card>
-        <Lightbox fluid={data.tower.childImageSharp.fluid} />
       </ImageWrapper>
     </Layout>
   )
