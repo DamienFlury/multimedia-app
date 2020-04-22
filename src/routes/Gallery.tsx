@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import FsLightbox from 'fslightbox-react';
 import Card from '../styled-components/Card';
 import Typography from '../styled-components/Typography';
 import mom from '../assets/images/mom.jpg';
@@ -34,36 +35,32 @@ const Flex = styled.div`
   grid-gap: 20px;
 `;
 
-const Gallery: React.FC = () => (
-  <Wrapper>
-    <Typography variant="h1">Gallery</Typography>
-    <Flex>
-      <Card>
-        <Image src={mom} />
-      </Card>
-      <Card>
-        <Image src={cocaCola} />
-      </Card>
-      <Card>
-        <Image src={first} />
-      </Card>
-      <Card>
-        <Image src={mountains} />
-      </Card>
-      <Card>
-        <Image src={sis} />
-      </Card>
-      <Card>
-        <Image src={skiLift} />
-      </Card>
-      <Card>
-        <Image src={skiLift2} />
-      </Card>
-      <Card>
-        <Image src={tower} />
-      </Card>
-    </Flex>
-  </Wrapper>
-);
+const images = [mom, cocaCola, first, mountains, sis, tower, skiLift, skiLift2];
+
+const Gallery: React.FC = () => {
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+
+  return (
+    <Wrapper>
+      <Typography variant="h1">Gallery</Typography>
+      <Flex>
+        {images.map((image, i) => (
+          <Card
+            onClick={() => {
+              setIndex(i);
+              setOpen(!open);
+            }}
+            key={image}
+          >
+            <Image src={image} />
+          </Card>
+        ))}
+      </Flex>
+
+      <FsLightbox toggler={open} sources={images} sourceIndex={index} />
+    </Wrapper>
+  );
+};
 
 export default Gallery;
