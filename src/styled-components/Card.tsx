@@ -1,10 +1,11 @@
-import React from 'react';
 import styled from 'styled-components';
 import Paper from './Paper';
 
-const CardWrapper = styled(Paper)`
+const Card = styled(Paper)`
   position: relative;
   display: inline-block;
+  border-radius: ${(props) => props.theme.borderRadius};
+  overflow: hidden;
   transition: background 0.2s;
   &::after {
     top: 0;
@@ -23,16 +24,5 @@ const CardWrapper = styled(Paper)`
     opacity: 1;
   }
 `;
-
-const OverflowFix = styled.div`
-  overflow: hidden;
-  border-radius: ${(props) => props.theme.borderRadius};
-`;
-
-const Card: React.FC = ({ children }) => (
-  <CardWrapper positionTransition>
-    <OverflowFix>{children}</OverflowFix>
-  </CardWrapper>
-);
 
 export default Card;
