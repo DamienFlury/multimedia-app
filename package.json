@@ -12,6 +12,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.4",
+    "@types/react-star-rating-component": "^1.4.0",
     "@types/styled-components": "^5.1.0",
     "framer-motion": "^1.10.3",
     "fslightbox-react": "^1.4.9",
@@ -20,6 +21,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-scroll-parallax": "^2.3.2",
+    "react-star-rating-component": "^1.4.1",
     "simple-react-lightbox": "^2.7.3-2",
     "styled-components": "^5.1.0",
     "typescript": "~3.7.2"

@@ -5,6 +5,7 @@ import CustomThemeProvider from './providers/CustomThemeProvider';
 import Navigation from './components/Navigation';
 import Home from './routes/Home';
 import Gallery from './routes/Gallery';
+import Technologies from './routes/Technologies';
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
             <Switch>
               <Route path="/gallery">
                 <Gallery />
+              </Route>
+              <Route path="/technologies">
+                <Technologies />
               </Route>
               <Route path="/">
                 <Home />
