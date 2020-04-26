@@ -1,19 +1,18 @@
-import Head from 'next/head';
-import Card from '../styled-components/Card';
-import Typography from '../styled-components/Typography';
 import styled from 'styled-components';
+import React from 'react';
+import Typography from '../styled-components/Typography';
 import Layout from '../components/Layout';
 
-const ParallaxContainer = styled.div`
-  max-height: 400px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const Image = styled.img`
-  width: 150%;
-`;
+// const ParallaxContainer = styled.div`
+//   max-height: 400px;
+//   overflow: hidden;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
+// const Image = styled.img`
+//   width: 150%;
+// `;
 const Main = styled.main`
   width: 80%;
   max-width: 920px;

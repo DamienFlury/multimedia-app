@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
-import { CustomThemeContext } from '../providers/CustomThemeProvider';
-import Typography from '../styled-components/Typography';
-import Link from 'next/link';
-import Spacer from '../styled-components/Spacer';
+import React, { useContext } from "react";
+import styled from "styled-components";
+import Link from "next/link";
+import { CustomThemeContext } from "../providers/CustomThemeProvider";
+import Typography from "../styled-components/Typography";
+import Spacer from "../styled-components/Spacer";
 
 const StyledHeader = styled.header`
   background: ${(props) => props.theme.colors.primary[0]};
@@ -35,15 +35,14 @@ type Props = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const NavBar: React.FC<Props> = ({ title, setOpen }) => {
+const NavBar: React.FC<Props> = ({ title }) => {
   const { setThemeType, themeType } = useContext(CustomThemeContext);
   return (
     <StyledHeader>
       <Toolbar>
-        
         <Typography variant="h2">
           <Link href="/">
-            <a className="nav-link">{title ?? 'App'}</a>
+            <a className="nav-link">{title ?? "App"}</a>
           </Link>
         </Typography>
         <Typography>
@@ -59,21 +58,23 @@ const NavBar: React.FC<Props> = ({ title, setOpen }) => {
         <Spacer />
         <IconButton
           onClick={() =>
-            setThemeType((prev) => (prev === 'light' ? 'dark' : 'light'))
+            setThemeType((prev) => (prev === "light" ? "dark" : "light"))
           }
         >
           <i className="material-icons md-36">
-            {themeType === 'light' ? 'brightness_2' : 'brightness_5'}
+            {themeType === "light" ? "brightness_2" : "brightness_5"}
           </i>
         </IconButton>
       </Toolbar>
-      <style jsx>{`
-        .nav-link {
-          color: white;
-          text-decoration: none;
-          margin: 0 10px;
-        }
-      `}</style>
+      <style jsx>
+        {`
+          .nav-link {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+          }
+        `}
+      </style>
     </StyledHeader>
   );
 };

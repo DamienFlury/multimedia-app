@@ -302,8 +302,10 @@ const Technologies: React.FC = () => {
           style={{ filter: `invert(${themeType === 'light' ? 0 : 1})` }}
         />
         <Typography>
-          Bei allen heutigen JavaScript-Frameworks ist es üblich, nur ein{' '}
-          <pre>index.html</pre>-file an den Browser zu schicken. Darin existiert
+          Bei allen heutigen JavaScript-Frameworks ist es üblich, nur ein
+          {' '}
+          <pre>index.html</pre>
+          -file an den Browser zu schicken. Darin existiert
           ein Root-Element in welchem dann der ganze Inhalt durch JavaScript
           dynamisch gerendert wird. Dabei leidet die Search Engine Optimization
           (SEO) und die Performance. Next.js ist ein beliebtes Server Side
@@ -315,11 +317,14 @@ const Technologies: React.FC = () => {
           auf den eventuell langsameren Geräten der Benutzer.
         </Typography>
       </Main>
-      <style jsx>{`
+      <style jsx>
+        {`
         pre {
           display: inline;
         }
-      `}</style>
+      `}
+
+      </style>
     </Layout>
   );
 };
