@@ -12,6 +12,7 @@
     "framer-motion": "^1.10.3",
     "fslightbox-react": "^1.4.9",
     "next": "9.3.5",
+    "normalize.css": "^8.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-star-rating-component": "^1.4.1",
