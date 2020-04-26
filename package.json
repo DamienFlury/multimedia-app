@@ -8,13 +8,20 @@
     "start": "next start"
   },
   "dependencies": {
+    "@types/styled-components": "^5.1.0",
+    "framer-motion": "^1.10.3",
+    "fslightbox-react": "^1.4.9",
     "next": "9.3.5",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-star-rating-component": "^1.4.1",
+    "styled-components": "^5.1.0"
   },
   "devDependencies": {
+    "@types/fslightbox-react": "^1.4.0",
     "@types/node": "^13.13.2",
     "@types/react": "^16.9.34",
+    "@types/react-star-rating-component": "^1.4.0",
     "typescript": "^3.8.3"
   }
 }
