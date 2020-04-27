@@ -113,6 +113,7 @@ const TableBody = styled.tbody``;
 
 const StyledA = styled.a`
   color: ${(props) => props.theme.colors.primary[0]};
+  text-decoration: none;
 `;
 
 const Technologies: React.FC = () => {
