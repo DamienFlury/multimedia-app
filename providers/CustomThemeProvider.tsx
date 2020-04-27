@@ -30,7 +30,7 @@ const darkTheme: DefaultTheme = {
 const lightTheme: DefaultTheme = {
   borderRadius: '4px',
   colors: {
-    primary: ['#007bff'],
+    primary: ['#005cbf'],
     secondary: [''],
     background: {
       main: ['#ffffff'],
