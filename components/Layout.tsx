@@ -25,6 +25,10 @@ const Layout: React.FC<Props> = ({ title, children }) => (
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet"
       ></link>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+        rel="stylesheet"
+      ></link>
     </Head>
     <NavBar title={'Multimedia App'} setOpen={() => {}} />
     <main>{children}</main>
