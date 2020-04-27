@@ -16,18 +16,18 @@ type Item = {
 const items: Item[] = [
   {
     title: 'Colour Changes',
-    leftImage: '/skiing/mountain-edge.jpg',
-    rightImage: '/skiing/changed_colors.jpg',
+    leftImage: '/skiing/20200314_102327.jpg',
+    rightImage: '/skiing/20200314_102327_changed_colors.jpg',
   },
   {
     title: 'Gaussian Blur',
-    leftImage: '/biking/20200418_145708.jpg',
-    rightImage: '/biking/20200418_145708_blur.jpg',
+    leftImage: '/bike/20200418_145708.jpg',
+    rightImage: '/bike/20200418_145708_blur.jpg',
   },
   {
     title: 'Emboss',
-    leftImage: '/biking/20200419_150821.jpg',
-    rightImage: '/biking/20200419_150821_emboss.jpg',
+    leftImage: '/bike/20200419_150821.jpg',
+    rightImage: '/bike/20200419_150821_emboss.jpg',
   },
 ];
 
