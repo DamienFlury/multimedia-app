@@ -82,7 +82,7 @@ const Gallery: React.FC = () => {
   return (
     <Layout title="Gallery">
       <Wrapper>
-        <Typography variant="h1">Gallery</Typography>
+        <Typography variant="h1">Galerie</Typography>
         {imageGroups.map((group, groupIndex) => (
           <div key={group.title}>
             <Typography variant="h2">{group.title}</Typography>

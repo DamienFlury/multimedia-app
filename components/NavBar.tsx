@@ -48,17 +48,17 @@ const NavBar: React.FC<Props> = ({ title }) => {
         </Typography>
         <Typography>
           <Link href="/gallery">
-            <a className="nav-link">Gallery</a>
+            <a className="nav-link">Galerie</a>
           </Link>
         </Typography>
         <Typography>
           <Link href="/image-processing">
-            <a className="nav-link">Image Processing</a>
+            <a className="nav-link">Bildbearbeitung</a>
           </Link>
         </Typography>
         <Typography>
           <Link href="/technologies">
-            <a className="nav-link">Technologies</a>
+            <a className="nav-link">Technologien</a>
           </Link>
         </Typography>
         <Spacer />
