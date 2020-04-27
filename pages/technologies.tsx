@@ -302,28 +302,26 @@ const Technologies: React.FC = () => {
           style={{ filter: `invert(${themeType === 'light' ? 0 : 1})` }}
         />
         <Typography>
-          Bei allen heutigen JavaScript-Frameworks ist es üblich, nur ein
-          {' '}
+          Bei allen heutigen JavaScript-Frameworks ist es üblich, nur ein{' '}
           <pre>index.html</pre>
-          -file an den Browser zu schicken. Darin existiert
-          ein Root-Element in welchem dann der ganze Inhalt durch JavaScript
-          dynamisch gerendert wird. Dabei leidet die Search Engine Optimization
-          (SEO) und die Performance. Next.js ist ein beliebtes Server Side
-          Rendering Framework (SSR) für React. Dabei kann das Markup auf dem
-          Server oder sogar beim Build generiert werden anstatt das ganze
-          dynamisch im Browser machen zu müssen. Dabei wird die SEO massiv
-          verbessert und normalerweise sind Server sehr leistungsstark, somit
-          wird ein grosser Teil der Arbeit vorab auf dem Server erledigt anstatt
-          auf den eventuell langsameren Geräten der Benutzer.
+          -file an den Browser zu schicken. Darin existiert ein Root-Element in
+          welchem dann der ganze Inhalt durch JavaScript dynamisch gerendert
+          wird. Dabei leidet die Search Engine Optimization (SEO) und die
+          Performance. Next.js ist ein beliebtes Server Side Rendering Framework
+          (SSR) für React. Dabei kann das Markup auf dem Server oder sogar beim
+          Build generiert werden anstatt das ganze dynamisch im Browser machen
+          zu müssen. Dabei wird die SEO massiv verbessert und normalerweise sind
+          Server sehr leistungsstark, somit wird ein grosser Teil der Arbeit
+          vorab auf dem Server erledigt anstatt auf den eventuell langsameren
+          Geräten der Benutzer.
         </Typography>
       </Main>
       <style jsx>
         {`
-        pre {
-          display: inline;
-        }
-      `}
-
+          pre {
+            display: inline;
+          }
+        `}
       </style>
     </Layout>
   );

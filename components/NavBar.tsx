@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import Link from "next/link";
-import { CustomThemeContext } from "../providers/CustomThemeProvider";
-import Typography from "../styled-components/Typography";
-import Spacer from "../styled-components/Spacer";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import Link from 'next/link';
+import { CustomThemeContext } from '../providers/CustomThemeProvider';
+import Typography from '../styled-components/Typography';
+import Spacer from '../styled-components/Spacer';
 
 const StyledHeader = styled.header`
   background: ${(props) => props.theme.colors.primary[0]};
@@ -11,6 +11,7 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 2;
+  transition: 0.2s background;
 `;
 
 const Toolbar = styled.div`
@@ -42,12 +43,17 @@ const NavBar: React.FC<Props> = ({ title }) => {
       <Toolbar>
         <Typography variant="h2">
           <Link href="/">
-            <a className="nav-link">{title ?? "App"}</a>
+            <a className="nav-link">{title ?? 'App'}</a>
           </Link>
         </Typography>
         <Typography>
           <Link href="/gallery">
             <a className="nav-link">Gallery</a>
+          </Link>
+        </Typography>
+        <Typography>
+          <Link href="/image-processing">
+            <a className="nav-link">Image Processing</a>
           </Link>
         </Typography>
         <Typography>
@@ -58,11 +64,11 @@ const NavBar: React.FC<Props> = ({ title }) => {
         <Spacer />
         <IconButton
           onClick={() =>
-            setThemeType((prev) => (prev === "light" ? "dark" : "light"))
+            setThemeType((prev) => (prev === 'light' ? 'dark' : 'light'))
           }
         >
           <i className="material-icons md-36">
-            {themeType === "light" ? "brightness_2" : "brightness_5"}
+            {themeType === 'light' ? 'brightness_2' : 'brightness_5'}
           </i>
         </IconButton>
       </Toolbar>
@@ -71,7 +77,7 @@ const NavBar: React.FC<Props> = ({ title }) => {
           .nav-link {
             color: white;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 15px;
           }
         `}
       </style>
