@@ -7,6 +7,87 @@ import Typography from '../styled-components/Typography';
 import Layout from '../components/Layout';
 import { CustomThemeContext } from '../providers/CustomThemeProvider';
 
+type Frameworks = {
+  vue: number;
+  react: number;
+  angular: number;
+};
+
+type Topic = {
+  title: string;
+  frameworks: Frameworks;
+};
+
+const ratings: Topic[] = [
+  {
+    title: 'Flexibility',
+    frameworks: {
+      vue: 4,
+      react: 5,
+      angular: 2,
+    },
+  },
+  {
+    title: 'Available Packages',
+    frameworks: {
+      vue: 2,
+      react: 5,
+      angular: 2,
+    },
+  },
+  {
+    title: 'Performance',
+    frameworks: {
+      vue: 4,
+      react: 4,
+      angular: 4,
+    },
+  },
+  {
+    title: 'Bundle Size',
+    frameworks: {
+      vue: 4,
+      react: 3,
+      angular: 1,
+    },
+  },
+  {
+    title: 'Simplicity',
+    frameworks: {
+      vue: 5,
+      react: 3,
+      angular: 1,
+    },
+  },
+  {
+    title: 'Knowledge',
+    frameworks: {
+      vue: 2,
+      react: 5,
+      angular: 3,
+    },
+  },
+  {
+    title: 'Fun',
+    frameworks: {
+      vue: 5,
+      react: 5,
+      angular: 2,
+    },
+  },
+];
+
+const getAverage = (fun: (topic: Topic) => number) =>
+  Math.round(
+    ratings.map(fun).reduce((acc, cur) => acc + cur, 0) / ratings.length
+  );
+
+const getConclusion = () => ({
+  vue: getAverage((topic) => topic.frameworks.vue),
+  react: getAverage((topic) => topic.frameworks.react),
+  angular: getAverage((topic) => topic.frameworks.angular),
+});
+
 const Logo = styled(motion.img)`
   width: 100%;
   max-width: 620px;
@@ -30,8 +111,13 @@ const TableCell = styled.td`
 const TableHead = styled.thead``;
 const TableBody = styled.tbody``;
 
+const StyledA = styled.a`
+  color: ${(props) => props.theme.colors.primary[0]};
+`;
+
 const Technologies: React.FC = () => {
   const { themeType } = useContext(CustomThemeContext);
+  const conclusion = getConclusion();
   return (
     <Layout title="Technologies">
       <Main>
@@ -49,7 +135,10 @@ const Technologies: React.FC = () => {
           was neben den Möglichkeiten auch ein Grund ist, weshalb ich mich für
           React entschieden habe. Da ich mich in React bereits sehr gut
           auskenne, aber ich trotzdem noch etwas neues lernen wollte, habe ich
-          das React-Framework Gatsby verwendet.
+          das React-Framework Next.js verwendet.
+        </Typography>
+        <Typography>
+          Weiter zu <StyledA href="https://reactjs.org/">React</StyledA>
         </Typography>
         <Typography variant="h3">Weshalb React?</Typography>
         <Typography>
@@ -90,206 +179,56 @@ const Technologies: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow>
-              <td>
-                <Typography>Flexibility</Typography>
-              </td>
-              <TableCell>
-                <StarRatingComponent
-                  value={4}
-                  name="flexibility-vue"
-                  editing={false}
-                />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={5}
-                  name="flexibility-react"
-                  editing={false}
-                />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={2}
-                  name="flexibility-angular"
-                  editing={false}
-                />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <td>
-                <Typography>Available Packages</Typography>
-              </td>
-              <TableCell>
-                <StarRatingComponent
-                  value={2}
-                  name="packages-vue"
-                  editing={false}
-                />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={5}
-                  name="packages-react"
-                  editing={false}
-                />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={2}
-                  name="packages-angular"
-                  editing={false}
-                />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <td>
-                <Typography>Performance</Typography>
-              </td>
-              <TableCell>
-                <StarRatingComponent
-                  value={4}
-                  name="performance-vue"
-                  editing={false}
-                />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={4}
-                  name="performance-react"
-                  editing={false}
-                />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={4}
-                  name="performance-angular"
-                  editing={false}
-                />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <td>
-                <Typography>Bundle Size</Typography>
-              </td>
-              <TableCell>
-                <StarRatingComponent
-                  value={4}
-                  name="bundle-size-vue"
-                  editing={false}
-                />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={3}
-                  name="bundle-size-react"
-                  editing={false}
-                />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={1}
-                  name="bundle-size-angular"
-                  editing={false}
-                />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <td>
-                <Typography>Simplicity</Typography>
-              </td>
-              <TableCell>
-                <StarRatingComponent
-                  value={5}
-                  name="simplicity-vue"
-                  editing={false}
-                />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={3}
-                  name="simplicity-react"
-                  editing={false}
-                />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={1}
-                  name="simplicity-angular"
-                  editing={false}
-                />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <td>
-                <Typography>Knowledge</Typography>
-              </td>
-              <TableCell>
-                <StarRatingComponent
-                  value={2}
-                  name="knowledge-vue"
-                  editing={false}
-                />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={5}
-                  name="knowledge-react"
-                  editing={false}
-                />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={3}
-                  name="knowledge-angular"
-                  editing={false}
-                />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <td>
-                <Typography>Fun</Typography>
-              </td>
-              <TableCell>
-                <StarRatingComponent value={5} name="fun-vue" editing={false} />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={5}
-                  name="fun-react"
-                  editing={false}
-                />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={2}
-                  name="fun-angular"
-                  editing={false}
-                />
-              </TableCell>
-            </TableRow>
+            {ratings.map((topic) => (
+              <TableRow key={topic.title}>
+                <td>
+                  <Typography>{topic.title}</Typography>
+                </td>
+                <TableCell>
+                  <StarRatingComponent
+                    value={topic.frameworks.vue}
+                    name={`${topic.title} (Vue)`}
+                    editing={false}
+                  />
+                </TableCell>
+                <TableCell>
+                  <StarRatingComponent
+                    value={topic.frameworks.react}
+                    name={`${topic.title} (React)`}
+                    editing={false}
+                  />
+                </TableCell>
+                <TableCell>
+                  <StarRatingComponent
+                    value={topic.frameworks.angular}
+                    name={`${topic.title} (Angular)`}
+                    editing={false}
+                  />
+                </TableCell>
+              </TableRow>
+            ))}
             <TableRow>
               <td>
                 <Typography>Conclusion</Typography>
               </td>
               <TableCell>
                 <StarRatingComponent
-                  value={4}
-                  name="conclusion-vue"
+                  value={conclusion.vue}
+                  name={`Conclusion (Vue)`}
                   editing={false}
                 />
               </TableCell>
               <TableCell>
                 <StarRatingComponent
-                  value={4}
-                  name="conclusion-react"
+                  value={conclusion.react}
+                  name={`Conclusion (React)`}
                   editing={false}
                 />
               </TableCell>
               <TableCell>
                 <StarRatingComponent
-                  value={2}
-                  name="conclusion-angular"
+                  value={conclusion.angular}
+                  name={`Conclusion (Angular)`}
                   editing={false}
                 />
               </TableCell>
@@ -314,6 +253,21 @@ const Technologies: React.FC = () => {
           Server sehr leistungsstark, somit wird ein grosser Teil der Arbeit
           vorab auf dem Server erledigt anstatt auf den eventuell langsameren
           Geräten der Benutzer.
+        </Typography>
+        <Typography>
+          Weiter zu <StyledA href="https://nextjs.org/">Next.js</StyledA>
+        </Typography>
+        <Typography variant="h2">
+          GIMP - GNU Image Manipulation Program
+        </Typography>
+        <Logo src="/gimp.png" />
+        <Typography>
+          Um die Bilder zu bearbeiten habe ich das kostenlose Programm GIMP
+          verwendet. Es bietet sehr viele Möglichkeiten und ist sehr flexibel.
+          Leider ist es manchmal bei schwierigeren Tasks abgestürzt.
+        </Typography>
+        <Typography>
+          Weiter zu <StyledA href="https://www.gimp.org/">GIMP</StyledA>
         </Typography>
       </Main>
       <style jsx>
