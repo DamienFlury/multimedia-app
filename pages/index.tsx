@@ -36,11 +36,11 @@ export default function Home() {
             BBW-Moduls 152.
           </Typography>
           <Cards>
-            <Link href="/gallery">
+            <Link href="/gallery/highlights">
               <a>
                 <Card>
                   <CardImage src="/bike/20200418_145706.jpg" />
-                  <CardTitle variant="h4">Galerie</CardTitle>
+                  <CardTitle variant="h4">Highlights</CardTitle>
                 </Card>
               </a>
             </Link>

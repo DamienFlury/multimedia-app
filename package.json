@@ -12,6 +12,7 @@
     "eslint-plugin-react-hooks": "^3.0.0",
     "framer-motion": "^1.10.3",
     "fslightbox-react": "^1.4.9",
+    "lodash": "^4.17.15",
     "next": "9.3.5",
     "normalize.css": "^8.0.1",
     "react": "16.13.1",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@types/fslightbox-react": "^1.4.0",
+    "@types/lodash": "^4.14.150",
     "@types/node": "^13.13.2",
     "@types/react": "^16.9.34",
     "@types/react-star-rating-component": "^1.4.0",
