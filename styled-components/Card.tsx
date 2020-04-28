@@ -26,7 +26,7 @@ const OuterCard = styled(Paper)`
     border-radius: ${(props) => props.theme.borderRadius};
     box-shadow: ${(props) => props.theme.shadows[1]};
     transition: opacity 0.3s ease-in-out;
-    z-index: 200;
+    z-index: 1;
   }
 
   &:hover::after {

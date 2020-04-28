@@ -44,19 +44,19 @@ export default function Home() {
                 </Card>
               </a>
             </Link>
-            <Link href="/technologies">
-              <a>
-                <Card>
-                  <CardImage src="/react.svg" />
-                  <CardTitle variant="h4">Technologien</CardTitle>
-                </Card>
-              </a>
-            </Link>
             <Link href="/image-processing">
               <a>
                 <Card>
                   <CardImage src="/skiing/20200314_102327_changed_colors.jpg" />
                   <CardTitle variant="h4">Bildbearbeitung</CardTitle>
+                </Card>
+              </a>
+            </Link>
+            <Link href="/technologies">
+              <a>
+                <Card>
+                  <CardImage src="/react.svg" />
+                  <CardTitle variant="h4">Technologien</CardTitle>
                 </Card>
               </a>
             </Link>

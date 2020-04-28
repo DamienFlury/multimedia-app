@@ -10,7 +10,7 @@ const StyledHeader = styled.header`
   margin-bottom: 1.45rem;
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 3;
   transition: 0.2s background;
 `;
 
