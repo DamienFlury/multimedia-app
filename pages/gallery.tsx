@@ -4,22 +4,13 @@ import FsLightbox from 'fslightbox-react';
 import Card from '../styled-components/Card';
 import Typography from '../styled-components/Typography';
 import Layout from '../components/Layout';
-
-type ImageProps = {
-  src: string;
-};
-
-const Image = styled.div<ImageProps>`
-  background: url(${(props) => props.src});
-  background-size: cover;
-  background-position: center center;
-  width: 100%;
-  height: 200px;
-`;
+import CardImage from '../styled-components/CardImage';
 
 const Wrapper = styled.div`
   width: 80%;
   margin: auto;
+  box-sizing: border-box;
+  overflow: auto;
 `;
 
 const Flex = styled.div`
@@ -131,7 +122,7 @@ const Gallery: React.FC = () => {
                   }}
                   key={image}
                 >
-                  <Image src={image} />
+                  <CardImage src={image} />
                 </Card>
               ))}
             </Flex>

@@ -24,7 +24,11 @@ const darkTheme: DefaultTheme = {
     },
     foreground: '#ffffff',
   },
-  shadows: ['0 2px 3px rgba(0, 0, 0, 0.5)', '0 5px 15px rgba(0, 0, 0, 0.3)'],
+  shadows: [
+    // '0 2px 3px rgba(0, 0, 0, 0.5)',
+    // '0 25px 50px -12px rgba(0, 0, 0, 0.25);',
+    // '0 5px 15px rgba(0, 0, 0, 0.3)',
+  ],
 };
 
 const lightTheme: DefaultTheme = {
@@ -38,7 +42,11 @@ const lightTheme: DefaultTheme = {
     },
     foreground: '#232323',
   },
-  shadows: ['0 2px 3px rgba(0, 0, 0, 0.5)', '0 5px 15px rgba(0, 0, 0, 0.3)'],
+  shadows: [
+    '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+    '0 15px 20px -5px rgba(0, 0, 0, 0.05)',
+    '0 5px 15px rgba(0, 0, 0, 0.3)',
+  ],
 };
 
 const CustomThemeProvider: React.FC = ({ children }) => {

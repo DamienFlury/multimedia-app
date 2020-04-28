@@ -4,17 +4,17 @@ import 'styled-components';
 // and extend them!
 declare module 'styled-components' {
   export interface DefaultTheme {
-    borderRadius: string
+    borderRadius: string;
 
     colors: {
-      primary: string[]
-      secondary: string[]
+      primary: string[];
+      secondary: string[];
       background: {
-        main: string[]
-        inverse: string[]
-      }
-      foreground: string
-    }
-    shadows: string[]
+        main: string[];
+        inverse: string[];
+      };
+      foreground: string;
+    };
+    shadows: string[];
   }
 }
