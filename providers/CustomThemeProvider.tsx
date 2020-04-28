@@ -14,7 +14,7 @@ export const CustomThemeContext = React.createContext<ContextState>({
 });
 
 const darkTheme: DefaultTheme = {
-  borderRadius: '4px',
+  borderRadius: '6px',
   colors: {
     primary: ['#007bff'],
     secondary: [''],
@@ -22,9 +22,10 @@ const darkTheme: DefaultTheme = {
       main: ['#232323', '#292929'],
       inverse: ['#ffffff'],
     },
-    foreground: '#ffffff',
+    foreground: '#f5f5f5',
   },
   shadows: [
+    'rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px',
     '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
     '0 15px 20px -5px rgba(0, 0, 0, 0.05)',
     '0 5px 15px rgba(0, 0, 0, 0.3)',
@@ -32,17 +33,18 @@ const darkTheme: DefaultTheme = {
 };
 
 const lightTheme: DefaultTheme = {
-  borderRadius: '4px',
+  borderRadius: '6px',
   colors: {
     primary: ['#005cbf'],
     secondary: [''],
     background: {
-      main: ['#ffffff'],
+      main: ['#f5f5f5', '#ffffff'],
       inverse: ['#232323'],
     },
     foreground: '#232323',
   },
   shadows: [
+    'rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px',
     '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
     '0 15px 20px -5px rgba(0, 0, 0, 0.05)',
     '0 5px 15px rgba(0, 0, 0, 0.3)',

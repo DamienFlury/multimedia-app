@@ -5,6 +5,8 @@ const Main = styled.main`
   max-width: 920px;
   margin: auto;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 `;
 
 export default Main;

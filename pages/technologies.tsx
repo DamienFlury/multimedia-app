@@ -6,6 +6,7 @@ import Main from '../styled-components/Main';
 import Typography from '../styled-components/Typography';
 import Layout from '../components/Layout';
 import { CustomThemeContext } from '../providers/CustomThemeProvider';
+import Paper from '../styled-components/Paper';
 
 type Frameworks = {
   vue: number;
@@ -152,90 +153,92 @@ const Technologies: React.FC = () => {
           sicherlich in Zukunft nochmals einen Blick darauf werfen, vor allem da
           bald Version 3.0 veröffentlicht wird.
         </Typography>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell />
-              <TableCell>
-                <Icon src="/vue.svg" />
-              </TableCell>
-              <TableCell>
-                <Icon src="/react.svg" />
-              </TableCell>
-              <TableCell>
-                <Icon src="/angular.webp" />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell />
-              <TableCell>
-                <Typography variant="h4">Vue</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="h4">React</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="h4">Angular</Typography>
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {ratings.map((topic) => (
-              <TableRow key={topic.title}>
+        <Paper style={{ padding: 20 }}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell />
+                <TableCell>
+                  <Icon src="/vue.svg" />
+                </TableCell>
+                <TableCell>
+                  <Icon src="/react.svg" />
+                </TableCell>
+                <TableCell>
+                  <Icon src="/angular.webp" />
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell />
+                <TableCell>
+                  <Typography variant="h4">Vue</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant="h4">React</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant="h4">Angular</Typography>
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {ratings.map((topic) => (
+                <TableRow key={topic.title}>
+                  <td>
+                    <Typography>{topic.title}</Typography>
+                  </td>
+                  <TableCell>
+                    <StarRatingComponent
+                      value={topic.frameworks.vue}
+                      name={`${topic.title} (Vue)`}
+                      editing={false}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <StarRatingComponent
+                      value={topic.frameworks.react}
+                      name={`${topic.title} (React)`}
+                      editing={false}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <StarRatingComponent
+                      value={topic.frameworks.angular}
+                      name={`${topic.title} (Angular)`}
+                      editing={false}
+                    />
+                  </TableCell>
+                </TableRow>
+              ))}
+              <TableRow>
                 <td>
-                  <Typography>{topic.title}</Typography>
+                  <Typography>Conclusion</Typography>
                 </td>
                 <TableCell>
                   <StarRatingComponent
-                    value={topic.frameworks.vue}
-                    name={`${topic.title} (Vue)`}
+                    value={conclusion.vue}
+                    name={`Conclusion (Vue)`}
                     editing={false}
                   />
                 </TableCell>
                 <TableCell>
                   <StarRatingComponent
-                    value={topic.frameworks.react}
-                    name={`${topic.title} (React)`}
+                    value={conclusion.react}
+                    name={`Conclusion (React)`}
                     editing={false}
                   />
                 </TableCell>
                 <TableCell>
                   <StarRatingComponent
-                    value={topic.frameworks.angular}
-                    name={`${topic.title} (Angular)`}
+                    value={conclusion.angular}
+                    name={`Conclusion (Angular)`}
                     editing={false}
                   />
                 </TableCell>
               </TableRow>
-            ))}
-            <TableRow>
-              <td>
-                <Typography>Conclusion</Typography>
-              </td>
-              <TableCell>
-                <StarRatingComponent
-                  value={conclusion.vue}
-                  name={`Conclusion (Vue)`}
-                  editing={false}
-                />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={conclusion.react}
-                  name={`Conclusion (React)`}
-                  editing={false}
-                />
-              </TableCell>
-              <TableCell>
-                <StarRatingComponent
-                  value={conclusion.angular}
-                  name={`Conclusion (Angular)`}
-                  editing={false}
-                />
-              </TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
+            </TableBody>
+          </Table>
+        </Paper>
         <Typography variant="h2">Next.js</Typography>
         <Logo
           src="/nextjs.svg"

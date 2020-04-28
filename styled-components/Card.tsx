@@ -13,6 +13,7 @@ const OuterCard = styled(Paper)`
   flex-direction: column;
   border-radius: ${(props) => props.theme.borderRadius};
   transition: background 0.2s;
+  box-shadow: ${(props) => props.theme.shadows[1]};
   cursor: pointer;
   &::after {
     content: '';
@@ -24,7 +25,7 @@ const OuterCard = styled(Paper)`
     opacity: 0;
     overflow: hidden;
     border-radius: ${(props) => props.theme.borderRadius};
-    box-shadow: ${(props) => props.theme.shadows[1]};
+    box-shadow: ${(props) => props.theme.shadows[2]};
     transition: opacity 0.3s ease-in-out;
     z-index: 1;
   }
