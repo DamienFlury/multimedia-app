@@ -1,35 +1,7 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components';
 import Link from 'next/link';
 import { CustomThemeContext } from '../providers/CustomThemeProvider';
-import Typography from '../styled-components/Typography';
-import Spacer from '../styled-components/Spacer';
-
-const StyledHeader = styled.header`
-  background: ${(props) => props.theme.colors.primary[0]};
-  margin-bottom: 1.45rem;
-  position: sticky;
-  top: 0;
-  z-index: 3;
-  transition: 0.2s background;
-`;
-
-const Toolbar = styled.div`
-  margin: 0 auto;
-  max-width: 960;
-  padding: 0 1.0875rem;
-  display: flex;
-  align-items: center;
-`;
-
-const IconButton = styled.button`
-  background: none;
-  border: none;
-  color: white;
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
-`;
+import { useRouter } from 'next/dist/client/router';
 
 type Props = {
   title?: string;
@@ -38,50 +10,52 @@ type Props = {
 
 const NavBar: React.FC<Props> = ({ title }) => {
   const { setThemeType, themeType } = useContext(CustomThemeContext);
+  const router = useRouter();
   return (
-    <StyledHeader>
-      <Toolbar>
-        <Typography variant="h2">
+    <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6 shadow-sm sticky top-0 z-10">
+      <div className="flex items-center flex-shrink-0 text-white mr-6">
+        <span className="font-semibold text-xl tracking-tight">
           <Link href="/">
             <a className="nav-link">{title ?? 'App'}</a>
           </Link>
-        </Typography>
-        <Typography>
+        </span>
+      </div>
+      <div className="w-full block flex-grow lg:flex lg:items-center sm:w-auto">
+        <div className="text-sm flex-grow">
           <Link href="/gallery">
-            <a className="nav-link">Galerie</a>
+            <a
+              className={`block mt-4 lg:inline-block lg:mt-0 ${
+                router.pathname === '/gallery' ? 'text-white' : 'text-teal-200'
+              } hover:text-white mr-4`}
+            >
+              Galerie
+            </a>
           </Link>
-        </Typography>
-        <Typography>
           <Link href="/image-processing">
-            <a className="nav-link">Bildbearbeitung</a>
+            <a
+              className={`block mt-4 lg:inline-block lg:mt-0 ${
+                router.pathname === '/image-processing'
+                  ? 'text-white'
+                  : 'text-teal-200'
+              } hover:text-white mr-4`}
+            >
+              Bildbearbeitung
+            </a>
           </Link>
-        </Typography>
-        <Typography>
           <Link href="/technologies">
-            <a className="nav-link">Technologien</a>
+            <a
+              className={`block mt-4 lg:inline-block lg:mt-0 ${
+                router.pathname === '/technologies'
+                  ? 'text-white'
+                  : 'text-teal-200'
+              } hover:text-white mr-4`}
+            >
+              Technologien
+            </a>
           </Link>
-        </Typography>
-        <Spacer />
-        <IconButton
-          onClick={() =>
-            setThemeType((prev) => (prev === 'light' ? 'dark' : 'light'))
-          }
-        >
-          <i className="material-icons md-36">
-            {themeType === 'light' ? 'brightness_2' : 'brightness_5'}
-          </i>
-        </IconButton>
-      </Toolbar>
-      <style jsx>
-        {`
-          .nav-link {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-          }
-        `}
-      </style>
-    </StyledHeader>
+        </div>
+      </div>
+    </nav>
   );
 };
 

@@ -19,12 +19,6 @@ import Link from 'next/link';
 //   width: 150%;
 // `;
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
-`;
-
 export default function Home() {
   return (
     <Layout title="Welcome">
@@ -35,32 +29,52 @@ export default function Home() {
             Dies ist meine Multimedia Applikation, erstellt im Rahmen des
             BBW-Moduls 152.
           </Typography>
-          <Cards>
+          <div className="flex flex-wrap">
             <Link href="/gallery/highlights">
               <a>
                 <Card>
-                  <CardImage src="/bike/20200418_145706.jpg" />
-                  <CardTitle variant="h4">Highlights</CardTitle>
+                  <img
+                    className="w-full"
+                    src="/bike/20200418_145706.jpg"
+                    alt="Highlights"
+                  />
+                  <div className="px-6 py-4">
+                    <div className="font-bold text-xl text-gray-800 mb-2">
+                      Highlights
+                    </div>
+                  </div>
                 </Card>
               </a>
             </Link>
             <Link href="/image-processing">
               <a>
                 <Card>
-                  <CardImage src="/skiing/20200314_102327_changed_colors.jpg" />
-                  <CardTitle variant="h4">Bildbearbeitung</CardTitle>
+                  <img
+                    className="w-full"
+                    src="/skiing/20200314_102327_changed_colors.jpg"
+                    alt="Changed Colours"
+                  />
+                  <div className="px-6 py-4">
+                    <div className="font-bold text-xl text-gray-800 mb-2">
+                      Bildbearbeitung
+                    </div>
+                  </div>
                 </Card>
               </a>
             </Link>
             <Link href="/technologies">
               <a>
                 <Card>
-                  <CardImage src="/react.svg" />
-                  <CardTitle variant="h4">Technologien</CardTitle>
+                  <img className="w-full" src="/react.svg" alt="React" />
+                  <div className="px-6 py-4">
+                    <div className="font-bold text-xl text-gray-800 mb-2">
+                      Technologien
+                    </div>
+                  </div>
                 </Card>
               </a>
             </Link>
-          </Cards>
+          </div>
         </Main>
       </div>
       <style jsx>
