@@ -30,7 +30,9 @@ export default function Home() {
     <Layout title="Welcome">
       <div className="container">
         <Main>
-          <Typography variant="h1">Willkommen</Typography>
+          <Typography variant="h1" className="rellax">
+            Willkommen
+          </Typography>
           <Typography>
             Dies ist meine Multimedia Applikation, erstellt im Rahmen des
             BBW-Moduls 152.
@@ -57,6 +59,14 @@ export default function Home() {
                 <Card>
                   <CardImage src="/react.svg" />
                   <CardTitle variant="h4">Technologien</CardTitle>
+                </Card>
+              </a>
+            </Link>
+            <Link href="/datatypes">
+              <a>
+                <Card>
+                  <CardImage src="/skiing/20200215_133057.jpg" />
+                  <CardTitle variant="h4">Dateitypen</CardTitle>
                 </Card>
               </a>
             </Link>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { CustomThemeContext } from '../providers/CustomThemeProvider';
 import Typography from '../styled-components/Typography';
 import Spacer from '../styled-components/Spacer';
+import { useRouter } from 'next/dist/client/router';
 
 const StyledHeader = styled.header`
   background: ${(props) => props.theme.colors.primary[0]};
@@ -31,6 +32,19 @@ const IconButton = styled.button`
   margin-right: 20px;
 `;
 
+const MenuIcon = styled(IconButton)`
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+`;
+
+const NavLinks = styled.div`
+  display: none;
+  @media screen and (min-width: 1024px) {
+    display: flex;
+  }
+`;
+
 type Props = {
   title?: string;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -38,29 +52,80 @@ type Props = {
 
 const NavBar: React.FC<Props> = ({ title }) => {
   const { setThemeType, themeType } = useContext(CustomThemeContext);
+  const { pathname } = useRouter();
   return (
     <StyledHeader>
       <Toolbar>
+        <MenuIcon>
+          <i className="material-icons">menu</i>
+        </MenuIcon>
         <Typography variant="h2">
           <Link href="/">
-            <a className="nav-link">{title ?? 'App'}</a>
+            <a className="nav-link" style={{ color: 'white' }}>
+              {title ?? 'App'}
+            </a>
           </Link>
         </Typography>
-        <Typography>
-          <Link href="/gallery">
-            <a className="nav-link">Galerie</a>
-          </Link>
-        </Typography>
-        <Typography>
-          <Link href="/image-processing">
-            <a className="nav-link">Bildbearbeitung</a>
-          </Link>
-        </Typography>
-        <Typography>
-          <Link href="/technologies">
-            <a className="nav-link">Technologien</a>
-          </Link>
-        </Typography>
+        <NavLinks>
+          <Typography>
+            <Link href="/gallery">
+              <a
+                className={`nav-link ${
+                  pathname.includes('/gallery') && 'active'
+                }`}
+              >
+                Galerie
+              </a>
+            </Link>
+          </Typography>
+          <Typography>
+            <Link href="/image-processing">
+              <a
+                className={`nav-link ${
+                  pathname === '/image-processing' && 'active'
+                }`}
+              >
+                Bildbearbeitung
+              </a>
+            </Link>
+          </Typography>
+          <Typography>
+            <Link href="/techniques">
+              <a
+                className={`nav-link ${pathname === '/techniques' && 'active'}`}
+              >
+                Techniken
+              </a>
+            </Link>
+          </Typography>
+          <Typography>
+            <Link href="/filetypes">
+              <a
+                className={`nav-link ${pathname === '/filetypes' && 'active'}`}
+              >
+                Verwendete Dateitypen
+              </a>
+            </Link>
+          </Typography>
+          <Typography>
+            <Link href="/technologies">
+              <a
+                className={`nav-link ${
+                  pathname === '/technologies' && 'active'
+                }`}
+              >
+                Technologien
+              </a>
+            </Link>
+          </Typography>
+          <Typography>
+            <Link href="/about">
+              <a className={`nav-link ${pathname === '/about' && 'active'}`}>
+                Über
+              </a>
+            </Link>
+          </Typography>
+        </NavLinks>
         <Spacer />
         <IconButton
           onClick={() =>
@@ -75,9 +140,12 @@ const NavBar: React.FC<Props> = ({ title }) => {
       <style jsx>
         {`
           .nav-link {
-            color: white;
+            color: #c9c9c9;
             text-decoration: none;
             margin: 0 15px;
+          }
+          .active {
+            color: white;
           }
         `}
       </style>
