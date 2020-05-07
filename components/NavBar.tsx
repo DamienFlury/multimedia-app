@@ -1,7 +1,48 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
 import { CustomThemeContext } from '../providers/CustomThemeProvider';
+import Typography from '../styled-components/Typography';
+import Spacer from '../styled-components/Spacer';
 import { useRouter } from 'next/dist/client/router';
+
+const StyledHeader = styled.header`
+  background: ${(props) => props.theme.colors.primary[0]};
+  margin-bottom: 1.45rem;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  transition: 0.2s background;
+`;
+
+const Toolbar = styled.div`
+  margin: 0 auto;
+  max-width: 960;
+  padding: 0 1.0875rem;
+  display: flex;
+  align-items: center;
+`;
+
+const IconButton = styled.button`
+  background: none;
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+`;
+
+const MenuIcon = styled(IconButton)`
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+`;
+
+const NavLinks = styled.div`
+  display: none;
+  @media screen and (min-width: 1024px) {
+    display: flex;
+  }
+`;
 
 type Props = {
   title?: string;
@@ -10,52 +51,104 @@ type Props = {
 
 const NavBar: React.FC<Props> = ({ title }) => {
   const { setThemeType, themeType } = useContext(CustomThemeContext);
-  const router = useRouter();
+  const { pathname } = useRouter();
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6 shadow-sm sticky top-0 z-10">
-      <div className="flex items-center flex-shrink-0 text-white mr-6">
-        <span className="font-semibold text-xl tracking-tight">
+    <StyledHeader>
+      <Toolbar>
+        <MenuIcon>
+          <i className="material-icons">menu</i>
+        </MenuIcon>
+        <Typography variant="h2">
           <Link href="/">
-            <a className="nav-link">{title ?? 'App'}</a>
-          </Link>
-        </span>
-      </div>
-      <div className="w-full block flex-grow lg:flex lg:items-center sm:w-auto">
-        <div className="text-sm flex-grow">
-          <Link href="/gallery">
-            <a
-              className={`block mt-4 lg:inline-block lg:mt-0 ${
-                router.pathname === '/gallery' ? 'text-white' : 'text-teal-200'
-              } hover:text-white mr-4`}
-            >
-              Galerie
+            <a className="nav-link" style={{ color: 'white' }}>
+              {title ?? 'App'}
             </a>
           </Link>
-          <Link href="/image-processing">
-            <a
-              className={`block mt-4 lg:inline-block lg:mt-0 ${
-                router.pathname === '/image-processing'
-                  ? 'text-white'
-                  : 'text-teal-200'
-              } hover:text-white mr-4`}
-            >
-              Bildbearbeitung
-            </a>
-          </Link>
-          <Link href="/technologies">
-            <a
-              className={`block mt-4 lg:inline-block lg:mt-0 ${
-                router.pathname === '/technologies'
-                  ? 'text-white'
-                  : 'text-teal-200'
-              } hover:text-white mr-4`}
-            >
-              Technologien
-            </a>
-          </Link>
-        </div>
-      </div>
-    </nav>
+        </Typography>
+        <NavLinks>
+          <Typography>
+            <Link href="/gallery">
+              <a
+                className={`nav-link ${
+                  pathname.includes('/gallery') && 'active'
+                }`}
+              >
+                Galerie
+              </a>
+            </Link>
+          </Typography>
+          <Typography>
+            <Link href="/image-processing">
+              <a
+                className={`nav-link ${
+                  pathname === '/image-processing' && 'active'
+                }`}
+              >
+                Bildbearbeitung
+              </a>
+            </Link>
+          </Typography>
+          <Typography>
+            <Link href="/techniques">
+              <a
+                className={`nav-link ${pathname === '/techniques' && 'active'}`}
+              >
+                Techniken
+              </a>
+            </Link>
+          </Typography>
+          <Typography>
+            <Link href="/filetypes">
+              <a
+                className={`nav-link ${pathname === '/filetypes' && 'active'}`}
+              >
+                Verwendete Dateitypen
+              </a>
+            </Link>
+          </Typography>
+          <Typography>
+            <Link href="/technologies">
+              <a
+                className={`nav-link ${
+                  pathname === '/technologies' && 'active'
+                }`}
+              >
+                Technologien
+              </a>
+            </Link>
+          </Typography>
+          <Typography>
+            <Link href="/about">
+              <a className={`nav-link ${pathname === '/about' && 'active'}`}>
+                Über
+              </a>
+            </Link>
+          </Typography>
+        </NavLinks>
+        <Spacer />
+        <IconButton
+          onClick={() =>
+            setThemeType((prev) => (prev === 'light' ? 'dark' : 'light'))
+          }
+        >
+          <i className="material-icons md-36">
+            {themeType === 'light' ? 'brightness_2' : 'brightness_5'}
+          </i>
+        </IconButton>
+      </Toolbar>
+      <style jsx>
+        {`
+          .nav-link {
+            color: #c9c9c9;
+            text-decoration: none;
+            margin: 0 15px;
+          }
+          .active {
+            color: white;
+          }
+        `}
+      </style>
+    </StyledHeader>
   );
 };
 
