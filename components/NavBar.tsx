@@ -13,7 +13,7 @@ const NavBar: React.FC<Props> = ({ title }) => {
   const { setThemeType, themeType } = useContext(CustomThemeContext);
   const { pathname } = useRouter();
   return (
-    <nav className="flex items-center bg-blue-600 text-white shadow-lg">
+    <nav className="flex items-center bg-blue-600 text-white shadow-lg sticky top-0">
       <button className="material-icons px-4">menu</button>
       <Link href="/">
         <a className="nav-link text-2xl p-4">{title ?? 'App'}</a>

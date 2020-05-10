@@ -22,10 +22,7 @@ const Gallery: React.FC = () => (
       <Cards>
         <Link href="/gallery/all">
           <a>
-            <Card>
-              <CardImage src="/bike/20200419_150812.jpg" />
-              <CardTitle variant="h4">All photos</CardTitle>
-            </Card>
+            <Card image="/bike/20200419_150812.jpg" title="All Photos" />
           </a>
         </Link>
         {albums.map((album) => (
@@ -35,10 +32,7 @@ const Gallery: React.FC = () => (
             key={album.title}
           >
             <a>
-              <Card>
-                <CardImage src={album.images[9]} />
-                <CardTitle variant="h4">{album.title}</CardTitle>
-              </Card>
+              <Card image={album.images[9]} title={album.title} />
             </a>
           </Link>
         ))}

@@ -21,78 +21,38 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <Layout title="Welcome">
-      <div className="container">
-        <Main>
-          <Typography variant="h1" className="rellax">
-            Willkommen
-          </Typography>
-          <Typography>
-            Dies ist meine Multimedia Applikation, erstellt im Rahmen des
-            BBW-Moduls 152.
-          </Typography>
-          <div className="flex flex-wrap">
-            <Link href="/gallery/highlights">
-              <a>
-                <Card>
-                  <img
-                    className="w-full"
-                    src="/bike/20200418_145706.jpg"
-                    alt="Highlights"
-                  />
-                  <div className="px-6 py-4">
-                    <div className="font-bold text-xl text-gray-800 mb-2">
-                      Highlights
-                    </div>
-                  </div>
-                </Card>
-              </a>
-            </Link>
-            <Link href="/image-processing">
-              <a>
-                <Card>
-                  <img
-                    className="w-full"
-                    src="/skiing/20200314_102327_changed_colors.jpg"
-                    alt="Changed Colours"
-                  />
-                  <div className="px-6 py-4">
-                    <div className="font-bold text-xl text-gray-800 mb-2">
-                      Bildbearbeitung
-                    </div>
-                  </div>
-                </Card>
-              </a>
-            </Link>
-            <Link href="/technologies">
-              <a>
-                <Card>
-                  <img className="w-full" src="/react.svg" alt="React" />
-                  <div className="px-6 py-4">
-                    <div className="font-bold text-xl text-gray-800 mb-2">
-                      Technologien
-                    </div>
-                  </div>
-                </Card>
-              </a>
-            </Link>
-            <Link href="/datatypes">
-              <a>
-                <Card>
-                  <CardImage src="/skiing/20200215_133057.jpg" />
-                  <CardTitle variant="h4">Dateitypen</CardTitle>
-                </Card>
-              </a>
-            </Link>
-          </div>
-        </Main>
-      </div>
-      <style jsx>
-        {`
-          a {
-            text-decoration: none;
-          }
-        `}
-      </style>
+      <main className="container mx-auto">
+        <h1 className="text-5xl pt-4">Willkommen</h1>
+        <p className="py-6">
+          Dies ist meine Multimedia Applikation, erstellt im Rahmen des
+          BBW-Moduls 152.
+        </p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <Link href="/gallery/highlights">
+            <a>
+              <Card image="/bike/20200418_145706.jpg" title="Highlights" />
+            </a>
+          </Link>
+          <Link href="/image-processing">
+            <a>
+              <Card
+                image="/skiing/20200314_102327_changed_colors.jpg"
+                title="Bildbearbeitung"
+              />
+            </a>
+          </Link>
+          <Link href="/technologies">
+            <a>
+              <Card image="/react.svg" title="Technologien" />
+            </a>
+          </Link>
+          <Link href="/datatypes">
+            <a>
+              <Card image="/skiing/20200215_133057.jpg" title="Dateitypen" />
+            </a>
+          </Link>
+        </div>
+      </main>
     </Layout>
   );
 }

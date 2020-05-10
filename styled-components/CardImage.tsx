@@ -7,7 +7,7 @@ type Props = {
 const CardImage = styled.div<Props>`
   background: url(${(props) => props.src});
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   width: 100%;
   height: 200px;
 `;

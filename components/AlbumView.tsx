@@ -27,9 +27,8 @@ const AlbumView: React.FC<Props> = ({ images }) => {
             setIndex(i);
             setOpen(!open);
           }}
-        >
-          <CardImage src={image} key={image} />
-        </Card>
+          image={image}
+        />
       ))}
       <FsLightbox toggler={open} sources={images} sourceIndex={index} />
     </Flex>
