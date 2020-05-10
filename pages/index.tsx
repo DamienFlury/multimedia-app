@@ -3,7 +3,6 @@ import Typography from '../styled-components/Typography';
 import Layout from '../components/Layout';
 import Main from '../styled-components/Main';
 import Card from '../styled-components/Card';
-import styled from 'styled-components';
 import CardImage from '../styled-components/CardImage';
 import CardTitle from '../styled-components/CardTitle';
 import Link from 'next/link';
@@ -84,7 +83,7 @@ export default function Home() {
                 </Card>
               </a>
             </Link>
-          </Cards>
+          </div>
         </Main>
       </div>
       <style jsx>

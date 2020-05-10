@@ -17,12 +17,12 @@ const StyledPaper = styled(Paper)`
 const FileTypes: React.FC = () => (
   <Layout title="Dateitypen">
     <Main>
-      <Typography variant="h1">Verwendete Dateitypen</Typography>
-      <StyledPaper>
-        <Typography variant="h2">JPEG</Typography>
-        <Typography>Die meisten Dateitypen sind .jpg:</Typography>
+      <h1 className="text-4xl py-4">Verwendete Dateitypen</h1>
+      <div className="shadow-md p-4 rounded">
+        <h2 className="text-3xl">JPEG</h2>
+        <p className="py-4">Die meisten Dateitypen sind .jpg:</p>
         <Image src="/skiing/20191228_114008.jpg" />
-      </StyledPaper>
+      </div>
       <StyledPaper>
         <Typography variant="h2">SVG</Typography>
         <Typography>Jedoch habe ich auch .SVG verwendet, wie:</Typography>
