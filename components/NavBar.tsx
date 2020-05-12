@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
 import { CustomThemeContext } from '../providers/CustomThemeProvider';
-import Spacer from '../styled-components/Spacer';
 import { useRouter } from 'next/dist/client/router';
 
 type Props = {
@@ -13,7 +12,7 @@ const NavBar: React.FC<Props> = ({ title }) => {
   const { setThemeType, themeType } = useContext(CustomThemeContext);
   const { pathname } = useRouter();
   return (
-    <nav className="flex items-center bg-blue-600 text-white shadow-lg sticky top-0">
+    <nav className="flex items-center bg-blue-600 text-white shadow-lg sticky top-0 z-10">
       <button className="material-icons px-4">menu</button>
       <Link href="/">
         <a className="nav-link text-2xl p-4">{title ?? 'App'}</a>
@@ -58,9 +57,9 @@ const NavBar: React.FC<Props> = ({ title }) => {
           Über
         </a>
       </Link>
-      <Spacer />
+      <div className="flex-1" />
       <i
-        className="material-icons md-36"
+        className="material-icons md-36 mr-4"
         onClick={() =>
           setThemeType((prev) => (prev === 'light' ? 'dark' : 'light'))
         }

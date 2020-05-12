@@ -1,17 +1,15 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import Main from '../styled-components/Main';
-import Typography from '../styled-components/Typography';
 
 const About: React.FC = () => (
   <Layout title="About">
-    <Main>
-      <Typography variant="h1">Urheberrecht</Typography>
-      <Typography>
+    <main className="container mx-auto">
+      <h1 className="text-5xl my-4">Urheberrecht</h1>
+      <p className="my-4">
         Alle verwendeten Medien stammen aus eigener Quelle.
-      </Typography>
-      <Typography>&copy;2020 Damien Flury</Typography>
-    </Main>
+      </p>
+      <p className="text-gray-600">&copy;2020 Damien Flury</p>
+    </main>
   </Layout>
 );
 

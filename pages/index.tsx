@@ -1,22 +1,7 @@
 import React from 'react';
-import Typography from '../styled-components/Typography';
 import Layout from '../components/Layout';
-import Main from '../styled-components/Main';
-import Card from '../styled-components/Card';
-import CardImage from '../styled-components/CardImage';
-import CardTitle from '../styled-components/CardTitle';
+import Card from '../components/Card';
 import Link from 'next/link';
-
-// const ParallaxContainer = styled.div`
-//   max-height: 400px;
-//   overflow: hidden;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
-// const Image = styled.img`
-//   width: 150%;
-// `;
 
 export default function Home() {
   return (

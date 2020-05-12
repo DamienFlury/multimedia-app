@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import CardImage from '../styled-components/CardImage';
-import Card from '../styled-components/Card';
+import Card from './Card';
 import FsLightbox from 'fslightbox-react';
-
-const Flex = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
-`;
 
 type Props = {
   images: string[];
@@ -19,7 +11,10 @@ const AlbumView: React.FC<Props> = ({ images }) => {
   const [index, setIndex] = useState(0);
 
   return (
-    <Flex>
+    <div
+      className="grid gap-4"
+      style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}
+    >
       {images.map((image, i) => (
         <Card
           key={image}
@@ -31,7 +26,7 @@ const AlbumView: React.FC<Props> = ({ images }) => {
         />
       ))}
       <FsLightbox toggler={open} sources={images} sourceIndex={index} />
-    </Flex>
+    </div>
   );
 };
 

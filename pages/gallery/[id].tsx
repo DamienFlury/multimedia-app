@@ -1,17 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/dist/client/router';
 import Layout from '../../components/Layout';
-import styled from 'styled-components';
 import albums from '../../albums';
-import Typography from '../../styled-components/Typography';
 import AlbumView from '../../components/AlbumView';
-
-const Wrapper = styled.div`
-  width: 80%;
-  margin: auto;
-  box-sizing: border-box;
-  overflow: auto;
-`;
 
 const Album: React.FC = () => {
   const router = useRouter();
@@ -19,10 +10,10 @@ const Album: React.FC = () => {
 
   return (
     <Layout title={album?.title ?? 'Album'}>
-      <Wrapper>
-        <Typography variant="h1">{album?.title}</Typography>
+      <div className="container mx-auto">
+        <h1 className="text-5xl my-4">{album?.title}</h1>
         <AlbumView images={album?.images ?? []} />
-      </Wrapper>
+      </div>
     </Layout>
   );
 };

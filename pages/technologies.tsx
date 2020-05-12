@@ -1,12 +1,8 @@
 import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
 import StarRatingComponent from 'react-star-rating-component';
-import Main from '../styled-components/Main';
-import Typography from '../styled-components/Typography';
 import Layout from '../components/Layout';
 import { CustomThemeContext } from '../providers/CustomThemeProvider';
-import Paper from '../styled-components/Paper';
 
 type Frameworks = {
   vue: number;
@@ -89,61 +85,36 @@ const getConclusion = () => ({
   angular: getAverage((topic) => topic.frameworks.angular),
 });
 
-const Logo = styled(motion.img)`
-  width: 100%;
-  max-width: 620px;
-  margin: auto;
-  display: block;
-`;
-
-const Icon = styled.img`
-  width: 100%;
-`;
-
-const Table = styled.table`
-  width: 100%;
-  table-layout: fixed;
-`;
-const TableRow = styled.tr``;
-const TableCell = styled.td`
-  text-align: center;
-`;
-
-const TableHead = styled.thead``;
-const TableBody = styled.tbody``;
-
-const StyledA = styled.a`
-  color: ${(props) => props.theme.colors.primary[0]};
-  text-decoration: none;
-`;
-
 const Technologies: React.FC = () => {
   const { themeType } = useContext(CustomThemeContext);
   const conclusion = getConclusion();
   return (
     <Layout title="Technologies">
-      <Main>
-        <Typography variant="h1">Angewandte Technologien</Typography>
-        <Typography variant="h2">React</Typography>
-        <Logo
+      <main className="container mx-auto">
+        <h1 className="text-5xl my-4">Angewandte Technologien</h1>
+        <h2 className="text-4xl my-4">React</h2>
+        <motion.img
           src="/react.svg"
           alt="React"
           animate={{ rotate: 360 }}
           transition={{ loop: Infinity, ease: 'linear', duration: 10 }}
         />
-        <Typography>
+        <p>
           React ist ein deklaratives JavaScript Framework, welches sehr komplexe
           Anwendungsfälle ermöglicht. Die Arbeit damit macht sehr viel Spass,
           was neben den Möglichkeiten auch ein Grund ist, weshalb ich mich für
           React entschieden habe. Da ich mich in React bereits sehr gut
           auskenne, aber ich trotzdem noch etwas neues lernen wollte, habe ich
           das React-Framework Next.js verwendet.
-        </Typography>
-        <Typography>
-          Weiter zu <StyledA href="https://reactjs.org/">React</StyledA>
-        </Typography>
-        <Typography variant="h3">Weshalb React?</Typography>
-        <Typography>
+        </p>
+        <p>
+          Weiter zu{' '}
+          <a href="https://reactjs.org/" className="text-blue-600">
+            React
+          </a>
+        </p>
+        <h3 className="text-2xl my-4">Weshalb React?</h3>
+        <p>
           Ich kenne mich aus mit React und Angular. Da React jedoch wesentlich
           einfacher aufgebaut ist, eher als eine Library statt Framework dient,
           und mehr Spass macht, war die Entscheidung für mich relativ klar. Eine
@@ -152,99 +123,99 @@ const Technologies: React.FC = () => {
           besser gefallen. Aber Vue interessiert mich dennoch und ich werde
           sicherlich in Zukunft nochmals einen Blick darauf werfen, vor allem da
           bald Version 3.0 veröffentlicht wird.
-        </Typography>
-        <Paper style={{ padding: 20 }}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell />
-                <TableCell>
-                  <Icon src="/vue.svg" />
-                </TableCell>
-                <TableCell>
-                  <Icon src="/react.svg" />
-                </TableCell>
-                <TableCell>
-                  <Icon src="/angular.webp" />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell />
-                <TableCell>
-                  <Typography variant="h4">Vue</Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant="h4">React</Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant="h4">Angular</Typography>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
+        </p>
+        <div className="shadow rounded p-4 my-4">
+          <table className="w-full table-fixed text-center">
+            <thead>
+              <tr>
+                <td />
+                <td>
+                  <img src="/vue.svg" />
+                </td>
+                <td>
+                  <img src="/react.svg" />
+                </td>
+                <td>
+                  <img src="/angular.webp" />
+                </td>
+              </tr>
+              <tr className="text-xl text-gray-800 my-4">
+                <td />
+                <td>
+                  <h4>Vue</h4>
+                </td>
+                <td>
+                  <h4>React</h4>
+                </td>
+                <td>
+                  <h4>Angular</h4>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
               {ratings.map((topic) => (
-                <TableRow key={topic.title}>
-                  <td>
-                    <Typography>{topic.title}</Typography>
+                <tr key={topic.title}>
+                  <td className="py-3 text-left">
+                    <h5>{topic.title}</h5>
                   </td>
-                  <TableCell>
+                  <td>
                     <StarRatingComponent
                       value={topic.frameworks.vue}
                       name={`${topic.title} (Vue)`}
                       editing={false}
                     />
-                  </TableCell>
-                  <TableCell>
+                  </td>
+                  <td className="text-center">
                     <StarRatingComponent
                       value={topic.frameworks.react}
                       name={`${topic.title} (React)`}
                       editing={false}
                     />
-                  </TableCell>
-                  <TableCell>
+                  </td>
+                  <td className="text-center">
                     <StarRatingComponent
                       value={topic.frameworks.angular}
                       name={`${topic.title} (Angular)`}
                       editing={false}
                     />
-                  </TableCell>
-                </TableRow>
+                  </td>
+                </tr>
               ))}
-              <TableRow>
-                <td>
-                  <Typography>Conclusion</Typography>
+              <tr>
+                <td className="py-3 text-left">
+                  <h4>Conclusion</h4>
                 </td>
-                <TableCell>
+                <td className="text-center">
                   <StarRatingComponent
                     value={conclusion.vue}
                     name={`Conclusion (Vue)`}
                     editing={false}
                   />
-                </TableCell>
-                <TableCell>
+                </td>
+                <td className="text-center">
                   <StarRatingComponent
                     value={conclusion.react}
                     name={`Conclusion (React)`}
                     editing={false}
                   />
-                </TableCell>
-                <TableCell>
+                </td>
+                <td className="text-center">
                   <StarRatingComponent
                     value={conclusion.angular}
                     name={`Conclusion (Angular)`}
                     editing={false}
                   />
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </Paper>
-        <Typography variant="h2">Next.js</Typography>
-        <Logo
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 className="text-4xl my-4">Next.js</h2>
+        <img
           src="/nextjs.svg"
           style={{ filter: `invert(${themeType === 'light' ? 0 : 1})` }}
         />
-        <Typography>
+        <p className="my-3">
           Bei allen heutigen JavaScript-Frameworks ist es üblich, nur ein{' '}
           <pre>index.html</pre>
           -file an den Browser zu schicken. Darin existiert ein Root-Element in
@@ -257,23 +228,27 @@ const Technologies: React.FC = () => {
           Server sehr leistungsstark, somit wird ein grosser Teil der Arbeit
           vorab auf dem Server erledigt anstatt auf den eventuell langsameren
           Geräten der Benutzer.
-        </Typography>
-        <Typography>
-          Weiter zu <StyledA href="https://nextjs.org/">Next.js</StyledA>
-        </Typography>
-        <Typography variant="h2">
-          GIMP - GNU Image Manipulation Program
-        </Typography>
-        <Logo src="/gimp.png" />
-        <Typography>
+        </p>
+        <p>
+          Weiter zu{' '}
+          <a href="https://nextjs.org/" className="text-blue-600">
+            Next.js
+          </a>
+        </p>
+        <h2 className="text-4xl mt-4">GIMP - GNU Image Manipulation Program</h2>
+        <img src="/gimp.png" />
+        <p>
           Um die Bilder zu bearbeiten habe ich das kostenlose Programm GIMP
           verwendet. Es bietet sehr viele Möglichkeiten und ist sehr flexibel.
           Leider ist es manchmal bei schwierigeren Tasks abgestürzt.
-        </Typography>
-        <Typography>
-          Weiter zu <StyledA href="https://www.gimp.org/">GIMP</StyledA>
-        </Typography>
-      </Main>
+        </p>
+        <p className="my-3">
+          Weiter zu{' '}
+          <a href="https://www.gimp.org/" className="text-blue-600">
+            GIMP
+          </a>
+        </p>
+      </main>
       <style jsx>
         {`
           pre {

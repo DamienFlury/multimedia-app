@@ -1,64 +1,48 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import Main from '../styled-components/Main';
-import Typography from '../styled-components/Typography';
-import styled from 'styled-components';
-import Paper from '../styled-components/Paper';
-
-const Image = styled.img`
-  width: 100%;
-`;
-
-const ImageGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  margin-bottom: 20px;
-`;
-
-const StyledPaper = styled(Paper)`
-  padding: 20px;
-  margin: 20px 0;
-`;
 
 const Techniques: React.FC = () => (
   <Layout title="Techniken">
-    <Main>
-      <Typography variant="h1">Techniken</Typography>
-      <Typography variant="h2">Tiefenschärfe</Typography>
-      <StyledPaper>
-        <Typography>Hintergrundunschärfe</Typography>
-        <Image src="/bike/20200419_150843.jpg" />
-      </StyledPaper>
-      <StyledPaper>
-        <Typography>Vordergrundunschärfe</Typography>
-        <Image src="/skiing/20200314_111709.jpg" />
-      </StyledPaper>
-
-      <Typography variant="h2">1/3-Regel</Typography>
-      <StyledPaper>
-        <Typography>
-          Wie man hier sehr schön sieht, ist bei folgenden Bildern der Teil im
-          Vordergrund im unteren Drittel.
-        </Typography>
-        <ImageGrid>
-          <Image src="/bike/20200404_151457.jpg" />
-          <Image src="/bike/20200404_151457_splitted.jpg" />
-        </ImageGrid>
-        <Image src="/skiing/20200215_110217.jpg" />
-      </StyledPaper>
-
-      <Typography variant="h2">Rote Augen Korrektur</Typography>
-      <StyledPaper>
-        <Typography>
-          Natürlich sind alle Bilder mit Personen Rote-Augen-korrigiert.
-        </Typography>
-        <ImageGrid>
-          <Image src="/bike/20200419_150852.jpg" />
-          <Image src="/bike/20200417_190620.jpg" />
-        </ImageGrid>
-      </StyledPaper>
-    </Main>
+    <main className="container mx-auto">
+      <h1 className="text-5xl py-4">Techniken</h1>
+      <section className="mb-8">
+        <h2 className="text-3xl">Tiefenschärfe</h2>
+        <div className="shadow rounded overflow-hidden my-4">
+          <img src="/bike/20200419_150843.jpg" />
+          <h4 className="text-xl m-4">Hintergrundunschärfe</h4>
+        </div>
+        <div className="shadow rounded overflow-hidden my-4">
+          <img src="/skiing/20200314_111709.jpg" />
+          <h4 className="text-xl m-4">Vordergrundunschärfe</h4>
+        </div>
+      </section>
+      <section className="my-4">
+        <h2 className="text-3xl">1/3-Regel</h2>
+        <div className="shadow rounded overflow-hidden my-4">
+          <div className="grid grid-cols-2 gap-5 mb-5">
+            <img src="/bike/20200404_151457.jpg" />
+            <img src="/bike/20200404_151457_splitted.jpg" />
+          </div>
+          <img src="/skiing/20200215_110217.jpg" />
+          <p className="m-4">
+            Wie man hier sehr schön sieht, ist bei diesen Bildern der Teil im
+            Vordergrund im unteren Drittel.
+          </p>
+        </div>
+      </section>
+      <section className="my-8">
+        <h2 className="text-3xl">Rote Augen Korrektur</h2>
+        <div className="shadow rounded overflow-hidden my-4">
+          <p className="m-4">
+            Natürlich sind alle Bilder mit Personen Rote-Augen-korrigiert.
+          </p>
+          <div className="grid grid-cols-2 gap-4" style={{ height: 900 }}>
+            <img src="/bike/20200419_150852.jpg" />
+            <img src="/bike/20200417_190620.jpg" />
+          </div>
+        </div>
+      </section>
+    </main>
   </Layout>
 );
 

@@ -1,13 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import Main from '../styled-components/Main';
-import Typography from '../styled-components/Typography';
 import ReactCompareImage from 'react-compare-image';
-import styled from 'styled-components';
 
-const ItemWrapper = styled.div`
-  margin-bottom: 30px;
-`;
 type Item = {
   leftImage: string;
   rightImage: string;
@@ -34,24 +28,24 @@ const items: Item[] = [
 const ImageProcessing: React.FC = () => {
   return (
     <Layout title="Bildbearbeitung">
-      <Main>
-        <Typography variant="h1">Bildbearbeitung</Typography>
-        <Typography>
+      <main className="container mx-auto">
+        <h1 className="text-5xl py-4">Bildbearbeitung</h1>
+        <p>
           Für alle Bildbearbeitungen habe ich das Tool GIMP (GNU Image
           Manipulation Program) verwendet.
-        </Typography>
+        </p>
         {items.map((item) => (
-          <ItemWrapper key={item.title}>
-            <Typography variant="h2">{item.title}</Typography>
+          <div key={item.title} className="pb-4">
+            <h2 className="text-3xl py-4">{item.title}</h2>
             <ReactCompareImage
               leftImage={item.leftImage}
               leftImageLabel="Before"
               rightImage={item.rightImage}
               rightImageLabel="After"
             />
-          </ItemWrapper>
+          </div>
         ))}
-      </Main>
+      </main>
     </Layout>
   );
 };
