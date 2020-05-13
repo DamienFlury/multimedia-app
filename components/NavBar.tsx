@@ -58,14 +58,14 @@ const NavBar: React.FC<Props> = ({ title }) => {
         </a>
       </Link>
       <div className="flex-1" />
-      <i
+      <button
         className="material-icons md-36 mr-4"
         onClick={() =>
           setThemeType((prev) => (prev === 'light' ? 'dark' : 'light'))
         }
       >
         {themeType === 'light' ? 'brightness_2' : 'brightness_5'}
-      </i>
+      </button>
     </nav>
   );
 };

@@ -17,7 +17,7 @@ const Card: React.FC<Props> = ({ image, title, onClick }) => (
     />
     {title && (
       <div className="px-6 py-4">
-        <div className="text-xl text-gray-800">{title}</div>
+        <div className="text-xl">{title}</div>
       </div>
     )}
   </div>

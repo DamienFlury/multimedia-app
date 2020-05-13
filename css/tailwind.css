@@ -1,3 +1,15 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+:root {
+  --color-bg-default-800: #fafafa;
+  --color-bg-default-700: #ffffff;
+  --color-text-default: #232323;
+}
+
+.dark-theme {
+  --color-bg-default-800: #232323;
+  --color-bg-default-700: #292929;
+  --color-text-default: #fafafa;
+}

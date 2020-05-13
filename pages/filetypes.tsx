@@ -5,12 +5,12 @@ const FileTypes: React.FC = () => (
   <Layout title="Dateitypen">
     <main className="container mx-auto">
       <h1 className="text-5xl py-4">Verwendete Dateitypen</h1>
-      <div className="shadow p-4 rounded bg-white my-4">
+      <div className="shadow p-4 rounded bg-default-700 transition duration-200 my-4">
         <h2 className="text-3xl">JPEG</h2>
         <p className="py-4">Die meisten Dateitypen sind .jpg:</p>
         <img src="/skiing/20191228_114008.jpg" />
       </div>
-      <div className="shadow p-4 rounded bg-white my-4">
+      <div className="shadow p-4 rounded bg-default-700 transition duration-200 my-4">
         <h2 className="text-3xl">SVG</h2>
         <p>Jedoch habe ich auch .SVG verwendet, wie:</p>
         <img src="/react.svg" />
@@ -21,7 +21,7 @@ const FileTypes: React.FC = () => (
           aber beliebig gezoomt werden, ohne an Auflösung zu verlieren.
         </p>
       </div>
-      <div className="shadow p-4 rounded bg-white my-4">
+      <div className="shadow p-4 rounded bg-default-700 transition duration-200 my-4">
         <h2 className="text-3xl">WebP</h2>
         <p>Eine ganz neue Bilddateiart gemacht für das Web ist .webp:</p>
         <div className="flex justify-center">
