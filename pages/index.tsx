@@ -13,12 +13,12 @@ export default function Home() {
           BBW-Moduls 152.
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <Link href="/gallery/highlights">
+          <Link href="/images/gallery/highlights">
             <a>
               <Card image="/bike/20200418_145706.jpg" title="Highlights" />
             </a>
           </Link>
-          <Link href="/image-processing">
+          <Link href="/images/image-processing">
             <a>
               <Card
                 image="/skiing/20200314_102327_changed_colors.jpg"
@@ -31,7 +31,7 @@ export default function Home() {
               <Card image="/react.svg" title="Technologien" />
             </a>
           </Link>
-          <Link href="/datatypes">
+          <Link href="/filetypes">
             <a>
               <Card image="/skiing/20200215_133057.jpg" title="Dateitypen" />
             </a>

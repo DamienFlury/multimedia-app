@@ -1,8 +1,8 @@
 import React from 'react';
-import Layout from '../../components/Layout';
+import Layout from '../../../components/Layout';
 import Link from 'next/link';
-import Card from '../../components/Card';
-import albums from '../../albums';
+import Card from '../../../components/Card';
+import albums from '../../../albums';
 
 const Gallery: React.FC = () => (
   <Layout title="Gallery">
@@ -12,15 +12,15 @@ const Gallery: React.FC = () => (
         className="grid gap-4"
         style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}
       >
-        <Link href="/gallery/all">
+        <Link href="/images/gallery/all">
           <a>
             <Card image="/bike/20200419_150812.jpg" title="All Photos" />
           </a>
         </Link>
         {albums.map((album) => (
           <Link
-            as={`/gallery/${album.path}`}
-            href="/gallery/[id]"
+            as={`/images/gallery/${album.path}`}
+            href="/images/gallery/[id]"
             key={album.title}
           >
             <a>

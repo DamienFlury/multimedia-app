@@ -1,8 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/dist/client/router';
-import Layout from '../../components/Layout';
-import albums from '../../albums';
-import AlbumView from '../../components/AlbumView';
+import Layout from '../../../components/Layout';
+import albums from '../../../albums';
+import AlbumView from '../../../components/AlbumView';
 
 const Album: React.FC = () => {
   const router = useRouter();

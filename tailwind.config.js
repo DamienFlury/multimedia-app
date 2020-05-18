@@ -1,4 +1,5 @@
 module.exports = {
+  purge: ['./**/*.tsx'],
   theme: {
     fontFamily: {
       sans: ['Montserrat', 'serif'],

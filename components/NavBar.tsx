@@ -12,32 +12,16 @@ const NavBar: React.FC<Props> = ({ title }) => {
   const { setThemeType, themeType } = useContext(CustomThemeContext);
   const { pathname } = useRouter();
   return (
-    <nav className="flex items-center bg-blue-600 text-white shadow-lg sticky top-0 z-10">
+    <nav className="flex items-center bg-blue-600 text-white sticky top-0 z-10">
       <button className="material-icons px-4">menu</button>
       <Link href="/">
         <a className="nav-link text-2xl p-4">{title ?? 'App'}</a>
       </Link>
-      <Link href="/gallery">
+      <Link href="/images">
         <a
-          className={`nav-link ${
-            pathname.includes('/gallery') && 'active'
-          } p-2`}
+          className={`nav-link ${pathname.includes('/images') && 'active'} p-2`}
         >
-          Galerie
-        </a>
-      </Link>
-      <Link href="/image-processing">
-        <a
-          className={`nav-link ${
-            pathname === '/image-processing' && 'active'
-          } p-2`}
-        >
-          Bildbearbeitung
-        </a>
-      </Link>
-      <Link href="/techniques">
-        <a className={`nav-link ${pathname === '/techniques' && 'active'} p-2`}>
-          Techniken
+          Bilder
         </a>
       </Link>
       <Link href="/filetypes">

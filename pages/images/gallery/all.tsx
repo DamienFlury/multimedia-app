@@ -1,7 +1,7 @@
 import React from 'react';
-import Layout from '../../components/Layout';
-import albums from '../../albums';
-import AlbumView from '../../components/AlbumView';
+import Layout from '../../../components/Layout';
+import albums from '../../../albums';
+import AlbumView from '../../../components/AlbumView';
 
 const All: React.FC = () => (
   <Layout title="Gallery">
