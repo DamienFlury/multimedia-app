@@ -20,6 +20,8 @@
     "react": "16.13.1",
     "react-compare-image": "^2.0.4",
     "react-dom": "16.13.1",
+    "react-player": "^2.1.0",
+    "react-scroll-parallax": "^2.3.2",
     "react-star-rating-component": "^1.4.1",
     "tailwindcss": "^1.4.6"
   },
