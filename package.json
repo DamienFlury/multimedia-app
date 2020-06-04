@@ -9,8 +9,13 @@
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.2",
+    "@prisma/cli": "^2.0.0-beta.8",
+    "@prisma/client": "^2.0.0-beta.8",
+    "@types/axios": "^0.14.0",
     "autoprefixer": "^9.7.6",
+    "axios": "^0.19.2",
     "eslint-plugin-react-hooks": "^3.0.0",
+    "formidable": "^1.2.2",
     "framer-motion": "^1.10.3",
     "fslightbox-react": "^1.4.9",
     "lodash": "^4.17.15",
@@ -26,6 +31,7 @@
     "tailwindcss": "^1.4.6"
   },
   "devDependencies": {
+    "@types/formidable": "^1.0.31",
     "@types/fslightbox-react": "^1.4.0",
     "@types/lodash": "^4.14.150",
     "@types/node": "^13.13.2",

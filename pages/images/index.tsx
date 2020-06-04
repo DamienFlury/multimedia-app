@@ -21,6 +21,14 @@ const Images: React.FC = () => (
             />
           </a>
         </Link>
+        <Link href="/images/upload">
+          <a>
+            <Card
+              image="/skiing/20200314_102327_changed_colors.jpg"
+              title="Upload"
+            />
+          </a>
+        </Link>
       </div>
     </main>
   </Layout>
