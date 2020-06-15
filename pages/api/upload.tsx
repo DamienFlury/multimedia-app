@@ -21,19 +21,18 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     form.multiples = true;
 
     form.parse(req, (err, fields, files) => {
-      console.log(files.image.path);
+      const path = files.image.path;
+      const filename = path.split('/')[2];
+      const processedPath = `public/uploads/processed/${filename}`;
+      sharp(files.image.path).blur(60).toFile(processedPath).then();
       prisma.image
         .create({
           data: {
-            path: files.image.path,
+            path,
+            processedPath,
           },
         })
         .then();
-      // prisma.image.create({
-      //   data: {
-      //     path: files.image.path,
-      //   },
-      // });
     });
     res.send({ result: 'yeet' });
   }

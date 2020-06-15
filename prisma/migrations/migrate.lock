@@ -1,3 +1,4 @@
 # Prisma Migrate lockfile v1
 
 20200604152640-init
+20200615150600-add-processed-path

@@ -23,7 +23,7 @@ const Upload: React.FC = () => {
     event.preventDefault();
     const formData = new FormData();
     if (file) {
-      formData.append('image', file, 'image.png');
+      formData.append('image', file, file.name);
       axios.post('/api/upload', formData, {
         onUploadProgress: (progress) => setUploadProgress(progress.loaded),
       });
