@@ -1,10 +1,17 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import formidable from 'formidable';
 import { PrismaClient } from '@prisma/client';
+import sharp from 'sharp';
 
 const prisma = new PrismaClient();
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
+  // if (req.method === 'GET') {
+  //   console.log('GET REQUEST');
+  //   sharp('camtasia.png').blur().toFile('yeet.png');
+  //   res.send('OKAY');
+  //   return;
+  // }
   if (req.method === 'POST') {
     const form = new formidable.IncomingForm();
     console.log('INCOMING IMAGE');
