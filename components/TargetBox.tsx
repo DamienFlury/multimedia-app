@@ -23,7 +23,7 @@ export const TargetBox: React.FC<TargetBoxProps> = (props) => {
   return (
     <div
       ref={drop}
-      className={`w-64 h-64 bg-gray-300 rounded shadow my-4 p-8 transition duration-500 ${
+      className={`w-64 h-64 bg-gray-300 rounded shadow p-8 transition duration-500 text-gray-800 ${
         isActive && 'bg-green-500'
       }`}
     >

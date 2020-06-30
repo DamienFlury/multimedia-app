@@ -24,7 +24,16 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       const path = files.image.path;
       const filename = path.split('/')[2];
       const processedPath = `public/uploads/processed/${filename}`;
-      sharp(files.image.path).blur(60).toFile(processedPath).then();
+      const blurRadius = +fields.blurRadius;
+      const sharpChain = sharp(files.image.path).rotate(+fields.rotation);
+      if (fields.flipped === 'true') {
+        sharpChain.flip();
+      }
+      if (blurRadius > 0.3 && blurRadius < 1000) {
+        sharpChain.blur(blurRadius);
+      }
+
+      sharpChain.toFile(processedPath).then();
       prisma.image
         .create({
           data: {
