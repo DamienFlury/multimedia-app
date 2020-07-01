@@ -8,7 +8,6 @@ const prisma = new PrismaClient();
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
-    console.log('GET REQUEST');
     const images = await prisma.image.findMany();
     res.send(images);
     return;

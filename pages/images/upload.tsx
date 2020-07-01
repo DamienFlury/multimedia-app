@@ -57,7 +57,7 @@ const Upload: React.FC = () => {
                     type="range"
                     value={blurRadius}
                     min="0"
-                    max="10"
+                    max="20"
                     step="0.1"
                     onChange={(e) => setBlurRadius(+e.target.value)}
                     className="mr-2"

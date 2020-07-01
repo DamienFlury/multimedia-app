@@ -8,17 +8,12 @@ type Props = {
 };
 
 const Card: React.FC<Props> = ({ image, title, onClick }) => {
-  const [index, setIndex] = useState(0);
-  console.log(index);
   return (
     <div
       className="rounded shadow-md overflow-hidden bg-default-700 transition duration-200"
       onClick={onClick}
     >
       <div
-        onMouseMove={(e) => {
-          setIndex(e.clientX);
-        }}
         style={{
           backgroundImage: `url(${image})`,
         }}

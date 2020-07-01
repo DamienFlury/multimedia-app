@@ -23,18 +23,12 @@ const Images: React.FC = () => (
         </Link>
         <Link href="/images/upload">
           <a>
-            <Card
-              image="/skiing/20200314_102327_changed_colors.jpg"
-              title="Upload"
-            />
+            <Card image="/bike/20200404_151449.jpg" title="Upload" />
           </a>
         </Link>
         <Link href="/images/uploaded-images">
           <a>
-            <Card
-              image="/skiing/20200314_102327_changed_colors.jpg"
-              title="Uploaded Images"
-            />
+            <Card image="/bike/20200419_150821.jpg" title="Uploaded Images" />
           </a>
         </Link>
       </div>
