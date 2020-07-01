@@ -22,8 +22,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     form.parse(req, async (err, fields, files) => {
       const path = files.image.path;
-      const processedPathPartial = `/uploads/processed/${uuid()}.png`;
+      const id = uuid();
+      const processedPathPartial = `/uploads/processed/${id}.png`;
+      const thumbnailPathPartial = `/uploads/thumbnails/${id}.png`;
       const processedPath = `public${processedPathPartial}`;
+      const thumbnailPath = `public${thumbnailPathPartial}`;
       const blurRadius = +fields.blurRadius;
       const sharpChain = sharp(files.image.path)
         .withMetadata()
@@ -32,9 +35,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       if (fields.flipped === 'true') {
         sharpChain.flip();
       }
+      if (fields.flopped === 'true') {
+        sharpChain.flop();
+      }
       if (blurRadius > 0.3 && blurRadius < 1000) {
         sharpChain.blur(blurRadius);
       }
+
+      const pathPartial = `/${path.split('/').splice(1).join('/')}`;
 
       await sharpChain
         .resize(1024)
@@ -43,10 +51,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         ])
         .png()
         .toFile(processedPath);
+      await sharp(files.image.path).resize(512).png().toFile(thumbnailPath);
       await prisma.image.create({
         data: {
-          path,
+          path: pathPartial,
           processedPath: processedPathPartial,
+          thumbnail: thumbnailPathPartial,
         },
       });
     });
