@@ -1,23 +1,25 @@
 import React, { useState, useCallback } from 'react';
 import Layout from '../../components/Layout';
 import axios from 'axios';
-import { DndProvider, DropTargetMonitor } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import { TargetBox } from '../../components/TargetBox';
+import { DropTargetMonitor } from 'react-dnd';
+import DropZone from '../../components/Upload/DropZone';
+import ImagePreview from '../../components/Upload/ImagePreview';
+import { Line } from 'rc-progress';
 
 const Upload: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
-  const [uploadProgress, setUploadProgress] = useState(0);
+  const [image, setImage] = useState<string | null>(null);
+  const [uploadProgress, setUploadProgress] = useState<any>(null);
   const [blurRadius, setBlurRadius] = useState(0);
   const [flip, setFlip] = useState(false);
   const [rotation, setRotation] = useState(0);
-  console.log(blurRadius);
 
   const handleFileDrop = useCallback(
     (item: any, monitor: DropTargetMonitor) => {
       if (monitor) {
         const files = monitor.getItem().files;
         setFile(files[0]);
+        setImage(URL.createObjectURL(files[0]));
       }
     },
     []
@@ -32,7 +34,7 @@ const Upload: React.FC = () => {
       formData.append('flipped', flip.toString());
       formData.append('rotation', rotation.toString());
       axios.post('/api/upload', formData, {
-        onUploadProgress: (progress) => setUploadProgress(progress.loaded),
+        onUploadProgress: (progress) => setUploadProgress(progress),
       });
     }
   };
@@ -42,22 +44,9 @@ const Upload: React.FC = () => {
         <h1 className="text-5xl my-4">Upload</h1>
         <form onSubmit={handleSubmit} className="my-4">
           <div className="flex">
-            <DndProvider backend={HTML5Backend}>
-              <TargetBox onDrop={handleFileDrop}>
-                {file &&
-                  `File ${file.name} uploaded with the size of ${
-                    file.size / 1000
-                  } MB`}
-              </TargetBox>
-            </DndProvider>
+            <DropZone file={file} onDrop={handleFileDrop} />
             <div className="ml-4">
-              <div
-                className="h-16 w-16 mb-4"
-                style={{
-                  transform: `rotate(${rotation}deg)`,
-                  background: 'linear-gradient(red, tomato)',
-                }}
-              />
+              <ImagePreview image={image} rotation={rotation} />
               <div className="mb-2">
                 <label htmlFor="blur" className="flex">
                   Blur Radius ({blurRadius})
@@ -104,6 +93,13 @@ const Upload: React.FC = () => {
           >
             Upload
           </button>
+          {uploadProgress && (
+            <Line
+              percent={(uploadProgress?.loaded / uploadProgress?.total) * 100}
+              strokeWidth={1}
+              strokeColor="#44aa44"
+            />
+          )}
         </form>
       </div>
     </Layout>

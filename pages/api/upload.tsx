@@ -25,7 +25,12 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       const filename = path.split('/')[2];
       const processedPath = `public/uploads/processed/${filename}`;
       const blurRadius = +fields.blurRadius;
-      const sharpChain = sharp(files.image.path).rotate(+fields.rotation);
+      const sharpChain = sharp(files.image.path)
+        .rotate(+fields.rotation)
+        .resize(1024)
+        .composite([
+          { input: 'public/bbw_watermark.png', gravity: 'southeast' },
+        ]);
       if (fields.flipped === 'true') {
         sharpChain.flip();
       }
