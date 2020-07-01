@@ -23,12 +23,16 @@ export const TargetBox: React.FC<TargetBoxProps> = (props) => {
   return (
     <div
       ref={drop}
-      className={`w-64 h-64 bg-gray-300 rounded shadow p-8 transition duration-500 text-gray-800 ${
+      className={`w-64 h-64 bg-gray-300 rounded shadow p-8 transition duration-500 text-gray-800 flex justify-center items-center overflow-hidden ${
         isActive && 'bg-green-500'
       }`}
     >
-      <div>{isActive ? 'Release to drop' : 'Drag file here'}</div>
-      <div>{children}</div>
+      {children ?? (
+        <>
+          <i className="material-icons px-4">get_app</i>
+          <div>{isActive ? 'Release to drop' : 'Drag file here'}</div>
+        </>
+      )}
     </div>
   );
 };

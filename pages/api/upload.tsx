@@ -2,35 +2,33 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import formidable from 'formidable';
 import { PrismaClient } from '@prisma/client';
 import sharp from 'sharp';
+import { v4 as uuid } from 'uuid';
 
 const prisma = new PrismaClient();
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
-  // if (req.method === 'GET') {
-  //   console.log('GET REQUEST');
-  //   sharp('camtasia.png').blur().toFile('yeet.png');
-  //   res.send('OKAY');
-  //   return;
-  // }
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method === 'GET') {
+    console.log('GET REQUEST');
+    const images = await prisma.image.findMany();
+    res.send(images);
+    return;
+  }
   if (req.method === 'POST') {
     const form = new formidable.IncomingForm();
-    console.log('INCOMING IMAGE');
 
     form.uploadDir = './public/uploads';
     form.keepExtensions = true;
     form.multiples = true;
 
-    form.parse(req, (err, fields, files) => {
+    form.parse(req, async (err, fields, files) => {
       const path = files.image.path;
-      const filename = path.split('/')[2];
-      const processedPath = `public/uploads/processed/${filename}`;
+      const processedPathPartial = `/uploads/processed/${uuid()}.png`;
+      const processedPath = `public${processedPathPartial}`;
       const blurRadius = +fields.blurRadius;
       const sharpChain = sharp(files.image.path)
-        .rotate(+fields.rotation)
-        .resize(1024)
-        .composite([
-          { input: 'public/bbw_watermark.png', gravity: 'southeast' },
-        ]);
+        .withMetadata()
+        .rotate(+fields.rotation);
+
       if (fields.flipped === 'true') {
         sharpChain.flip();
       }
@@ -38,15 +36,19 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
         sharpChain.blur(blurRadius);
       }
 
-      sharpChain.toFile(processedPath).then();
-      prisma.image
-        .create({
-          data: {
-            path,
-            processedPath,
-          },
-        })
-        .then();
+      await sharpChain
+        .resize(1024)
+        .composite([
+          { input: 'public/bbw_watermark.png', gravity: 'southeast' },
+        ])
+        .png()
+        .toFile(processedPath);
+      await prisma.image.create({
+        data: {
+          path,
+          processedPath: processedPathPartial,
+        },
+      });
     });
     res.send({ result: 'yeet' });
   }
