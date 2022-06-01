@@ -31,7 +31,7 @@
     "react-player": "^2.1.0",
     "react-scroll-parallax": "^2.3.2",
     "react-star-rating-component": "^1.4.1",
-    "sharp": "^0.25.4",
+    "sharp": "^0.30.5",
     "tailwindcss": "^1.4.6",
     "uuid": "^8.2.0"
   },
